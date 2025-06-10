@@ -1,0 +1,167 @@
+/* ============== */
+/* Portfolio Page Specific Styles */
+/* ============== */
+
+/* General .page-content and .page-title-section are styled in style.css (global) */
+
+/* Portfolio Page - Page Title Section */
+.page-title-section.neumorphic-inset { /* Applied to the section in HTML */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem; /* فاصله از هدر */
+    /* margin-bottom is 2.5rem from global style.css, which is fine here */
+    padding: 2rem 15px; /* حفظ پدینگ عمودی، اضافه کردن پدینگ افقی */
+    box-sizing: border-box;
+}
+
+.portfolio-page-section {
+    /* padding from .home-section in style.css applies if .home-section class is used on the section */
+}
+
+.portfolio-page-section .section-subtitle { /* For intro paragraph on portfolio page */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-secondary);
+}
+
+.portfolio-grid {
+    display: grid;
+    gap: 2.5rem; 
+    grid-template-columns: 1fr;
+}
+
+/* Tablet - 2 columns */
+@media (min-width: 768px) { 
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.portfolio-card {
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border-radius: var(--border-radius); /* This radius is for the overall card */
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+}
+.portfolio-card:hover { 
+    transform: translateY(-5px);
+    box-shadow:
+        calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-blur) * 1.1) var(--neumorphic-shadow-light),
+        calc(var(--neumorphic-shadow-distance) * 1) calc(var(--neumorphic-shadow-distance) * 1) calc(var(--neumorphic-shadow-blur) * 1.1) var(--neumorphic-shadow-dark);
+}
+
+
+.portfolio-card-link { 
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    text-decoration: none;
+    color: inherit; 
+}
+
+.portfolio-card-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 10; 
+    background-color: var(--neumorphic-shadow-dark); 
+    overflow: hidden;
+    /* MODIFIED: Specific border-radius for top corners only */
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    border-bottom-left-radius: 0; /* Sharp bottom corners */
+    border-bottom-right-radius: 0; /* Sharp bottom corners */
+}
+
+.portfolio-card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+    border-radius: 0; /* MODIFIED: Ensure image itself has no border-radius */
+}
+
+.portfolio-card:hover .portfolio-card-image-wrapper img {
+    transform: scale(1.05); 
+}
+
+.portfolio-card-content {
+    padding: 1.25rem;
+    text-align: right;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--neumorphic-bg); 
+    /* border-top: 1px solid var(--neumorphic-shadow-dark); /* This can be removed if image wrapper is directly above */
+}
+
+.portfolio-card-title {
+    font-size: 1.3rem;
+    color: var(--text-headings);
+    margin-bottom: 0.25rem;
+}
+
+.portfolio-card-category {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: normal;
+}
+
+.portfolio-card-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex-grow: 1; 
+    margin-bottom: 0;
+}
+
+.portfolio-card-tech {
+    margin-top: 1rem;
+    text-align: right;
+}
+.portfolio-card-tech span {
+    display: inline-block;
+    background-color: var(--neumorphic-bg); 
+    color: var(--text-secondary);
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
+    border-radius: 6px; 
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: inset 1px 1px 2px var(--neumorphic-shadow-dark), inset -1px -1px 2px var(--neumorphic-shadow-light);
+}
+
+/* CTA Section at the end of portfolio page uses .cta-section-page from global style.css */
+
+@media (max-width: 767px) {
+    /* Responsive adjustments for framed sections on Portfolio Page */
+    .page-title-section.neumorphic-inset { 
+        padding: 1.5rem 15px;
+        margin-top: 1rem; 
+        margin-bottom: 2rem; 
+    }
+
+    /* Other existing mobile styles from your portfolio.css */
+    .portfolio-grid {
+        gap: 2rem; 
+    }
+    .portfolio-card-content {
+        padding: 1rem;
+    }
+    .portfolio-card-title {
+        font-size: 1.15rem;
+    }
+    .portfolio-card-description {
+        font-size: 0.85rem;
+    }
+    .portfolio-card-image-wrapper {
+        aspect-ratio: 3 / 2; 
+        /* border-radius for mobile can remain as is (top rounded, bottom sharp) or be uniform if desired */
+        /* If uniform rounded corners needed for image wrapper on mobile:
+        border-radius: var(--border-radius); 
+        */
+    }
+}

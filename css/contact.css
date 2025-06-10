@@ -1,0 +1,217 @@
+/* ============== */
+/* Contact Page Specific Styles - Simplified & Corrected */
+/* ============== */
+
+/* Contact Page - Page Title Section */
+.page-title-section.neumorphic-inset { /* Applied to the section in HTML */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem; /* فاصله از هدر */
+    /* global style.css provides padding: 2rem 0 and margin-bottom: 2.5rem */
+    padding-left: 15px; /* Adding horizontal padding */
+    padding-right: 15px; /* Adding horizontal padding */
+    box-sizing: border-box;
+}
+
+.contact-page-section .section-subtitle {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-primary);
+}
+
+.contact-page-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    align-items: flex-start;
+}
+
+.contact-details-column,
+.contact-form-column {
+    flex: 1;
+    min-width: 300px; 
+}
+
+.contact-info-block, 
+.contact-form-wrapper { 
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    height: 100%; 
+    box-sizing: border-box; 
+}
+
+.contact-info-block h3,
+.contact-form-wrapper h3 {
+    font-size: 1.5rem;
+    color: var(--text-headings);
+    margin-bottom: 1.5rem;
+    text-align: right;
+    display: flex;
+    align-items: center;
+}
+.contact-info-block h3 i,
+.contact-form-wrapper h3 i {
+    margin-left: 0.75rem;
+    font-size: 1.1em;
+    color: var(--text-primary); 
+}
+
+/* Revised Contact Info List */
+.contact-info-list-revised {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.contact-info-list-revised li {
+    margin-bottom: 1rem;
+}
+.contact-item-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed) ease;
+}
+.contact-item-icon {
+    font-size: 1.5rem;
+    color: var(--text-headings); 
+    margin-left: 1rem;
+    width: 30px;
+    text-align: center;
+    transition: color var(--transition-speed) ease;
+}
+.contact-item-text {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+.contact-item-text strong {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+.contact-item-text span {
+    font-size: 1rem;
+    color: var(--text-primary); 
+    font-weight: normal;
+    word-break: break-all;
+    transition: color var(--transition-speed) ease;
+    direction: ltr; 
+    unicode-bidi: embed; 
+    display: inline-block; 
+}
+
+/* Hover effects for contact item links */
+.contact-item-link:hover .contact-item-text span,
+.contact-item-link:hover .contact-item-text strong {
+    color: var(--text-link-hover); 
+}
+/* Specific icon hover colors for contact methods */
+.contact-item-link:hover .fa-whatsapp { color: var(--social-whatsapp); }
+.contact-item-link:hover .fa-envelope-open-text { color: var(--social-telegram); } /* MODIFIED: Changed to Telegram Blue for Email */
+.contact-item-link:hover .fa-phone-volume { color: var(--social-instagram); } /* MODIFIED: Changed to Instagram Red for Phone */
+
+
+/* Social Links on Contact Page */
+.social-links-contact-page {
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+.social-links-contact-page a {
+    display: inline-flex;   
+    align-items: center;    
+    justify-content: center; 
+    width: 50px;            
+    height: 50px;           
+    border-radius: 50%;     
+    margin: 0 0 0 0.8rem;   
+    font-size: 1.5rem;      
+    color: var(--text-secondary);
+    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    text-decoration: none; 
+}
+
+.social-links-contact-page a:last-child {
+    margin-left: 0;
+}
+
+.social-links-contact-page a:hover {
+    transform: translateY(-2px);
+}
+
+/* Brand color change on hover for the icon itself */
+.social-links-contact-page a.social-icon-instagram:hover i { color: var(--social-instagram); }
+.social-links-contact-page a.social-icon-telegram:hover i { color: var(--social-telegram); }
+.social-links-contact-page a.social-icon-whatsapp:hover i { color: var(--social-whatsapp); }
+.social-links-contact-page a.social-icon-linkedin:hover i { color: var(--social-linkedin); }
+
+.social-links-contact-page a i {
+    line-height: 1; 
+}
+
+/* Contact Form Styles */
+.contact-page-form .form-group {
+    /* Inherits global .form-group styles */
+}
+.contact-page-form .form-group input[type="text"],
+.contact-page-form .form-group input[type="email"],
+.contact-page-form .form-group input[type="tel"],
+.contact-page-form .form-group textarea {
+    padding: 12px 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.contact-page-form .form-submit-button {
+    font-family: var(--font-primary);
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.7rem 2rem; 
+    font-size: 0.9rem;    
+    margin-top: 1rem;
+    float: left;
+    border-radius: var(--border-radius); 
+    box-shadow:
+        calc(var(--neumorphic-shadow-distance) * -0.6) calc(var(--neumorphic-shadow-distance) * -0.6) calc(var(--neumorphic-shadow-blur) * 0.8) var(--neumorphic-shadow-light),
+        calc(var(--neumorphic-shadow-distance) * 0.6) calc(var(--neumorphic-shadow-distance) * 0.6) calc(var(--neumorphic-shadow-blur) * 0.8) var(--neumorphic-shadow-dark);
+}
+
+
+/* Responsive Adjustments for Contact Page */
+@media (max-width: 767px) {
+    .page-title-section.neumorphic-inset { 
+        padding: 1.5rem 15px;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-page-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .contact-info-block,
+    .contact-form-wrapper {
+        padding: 1.5rem;
+        height: auto; 
+    }
+    .contact-info-block h3,
+    .contact-form-wrapper h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    .contact-item-text strong { font-size: 0.85rem; }
+    .contact-item-text span { font-size: 0.9rem; }
+
+    .social-links-contact-page {
+        text-align: center;
+    }
+    .social-links-contact-page a {
+        margin: 0 0.5rem;
+        font-size: 1.4rem;
+    }
+}

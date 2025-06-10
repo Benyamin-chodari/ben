@@ -1,0 +1,222 @@
+/* ============== */
+/* About Me Page Specific Styles */
+/* ============== */
+
+/* Page Title Section - About Page */
+.page-title-section.neumorphic-inset { /* Applied to the section in HTML */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem; /* فاصله از هدر */
+    /* margin-bottom is 2.5rem from global style.css */
+    padding: 2rem 15px; /* حفظ پدینگ عمودی، اضافه کردن پدینگ افقی */
+    box-sizing: border-box;
+}
+
+.about-page-intro .about-me-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    text-align: right;
+    max-width: 1000px; /* This max-width is for the content block itself */
+    margin: 0 auto; /* This centers the .about-me-content block */
+}
+
+.about-page-intro .about-me-text h2 { /* Main heading in the text block */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.about-page-intro .about-me-text p {
+    font-size: 1.05rem; 
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+    text-align: justify; 
+}
+
+.profile-page-image { 
+    width: 85%;        
+    max-width: 400px;  
+    height: auto;      
+    border-radius: var(--border-radius);
+    padding: 10px;     
+    margin: 0 auto 1.5rem auto; 
+}
+
+.profile-page-image img {
+    display: block;
+    width: 100%;    
+    height: auto;   
+    object-fit: cover;
+    border-radius: calc(var(--border-radius) - 4px); 
+}
+
+
+/* Skills Section on About Page */
+.skills-section.neumorphic-outset { /* Applied to the section in HTML */
+    /* .home-section class in HTML provides base vertical padding of 3rem top/bottom */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3rem; /* Retain existing or from .home-section */
+    padding-bottom: 3rem; /* Retain existing or from .home-section */
+    padding-left: 15px; /* Added horizontal padding */
+    padding-right: 15px; /* Added horizontal padding */
+    box-sizing: border-box;
+    margin-bottom: 1.5rem; /* فاصله از بخش بعدی یا فوتر */
+}
+
+.skills-section .section-subtitle { 
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: -1.5rem; 
+    margin-bottom: 3rem; 
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.skill-category {
+    margin-bottom: 3rem; 
+    text-align: right;
+}
+.skill-category:last-child {
+    margin-bottom: 0;
+}
+
+.skill-category h3 {
+    font-size: 1.6rem; 
+    color: var(--text-headings);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem; 
+    border-bottom: 2px solid var(--neumorphic-shadow-dark); 
+    display: inline-block;
+    position: relative;
+}
+.skill-category h3 i {
+    margin-left: 0.85rem; 
+    color: var(--text-headings); 
+    font-size: 1.1em; 
+}
+
+.skills-grid { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+    gap: 1.2rem 1rem; 
+}
+
+.skill-tag { 
+    padding: 0.8rem 1.5rem; 
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-radius: var(--border-radius); 
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem; 
+    transition: all var(--transition-speed) ease-out;
+    cursor: default;
+    box-shadow:
+        calc(var(--neumorphic-shadow-distance) * -0.4) calc(var(--neumorphic-shadow-distance) * -0.4) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-light),
+        calc(var(--neumorphic-shadow-distance) * 0.4) calc(var(--neumorphic-shadow-distance) * 0.4) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-dark);
+}
+
+.skill-tag:hover {
+    color: var(--text-headings);
+    transform: scale(1.03); 
+    box-shadow:
+        inset calc(var(--neumorphic-shadow-distance) * -0.5) calc(var(--neumorphic-shadow-distance) * -0.5) calc(var(--neumorphic-shadow-blur) * 0.5) var(--neumorphic-shadow-light),
+        inset calc(var(--neumorphic-shadow-distance) * 0.5) calc(var(--neumorphic-shadow-distance) * 0.5) calc(var(--neumorphic-shadow-blur) * 0.5) var(--neumorphic-shadow-dark);
+}
+
+.skill-tag.wordpress-skill { 
+    padding: 0.9rem 1.6rem; 
+    font-weight: bold; 
+}
+.skill-tag.wordpress-skill i {
+    color: #21759B; 
+}
+
+.skill-tag i { 
+    font-size: 1.2rem; 
+    color: var(--text-primary);
+}
+
+
+/* CTA Section on About Page */
+.cta-section-page { 
+    /* padding is from .home-section in global style.css */
+}
+
+/* Responsive adjustments specific to About Me Page elements */
+@media (max-width: 767px) {
+    .page-title-section.neumorphic-inset { /* Ensure padding is suitable for mobile */
+        padding: 1.5rem 15px;
+        margin-top: 1rem; /* Adjust top margin for mobile if needed */
+        margin-bottom: 2rem; /* Adjust bottom margin for mobile if needed */
+    }
+    .skills-section.neumorphic-outset { /* Ensure padding is suitable for mobile */
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        margin-bottom: 1rem; /* Adjust bottom margin for mobile if needed */
+        /* Horizontal padding (15px) is already set */
+    }
+
+    .about-page-intro .about-me-content {
+        flex-direction: column; 
+        gap: 2rem;
+    }
+    .profile-page-image {
+        width: 90%; 
+        max-width: 300px; 
+        margin: 0 auto 2rem auto; 
+        flex-basis: auto; 
+    }
+    .about-page-intro .about-me-text h2 {
+        font-size: 1.75rem;
+        text-align: center;
+    }
+     .about-page-intro .about-me-text p {
+        font-size: 1rem; 
+    }
+
+    .skills-section .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    .skill-category {
+        text-align: center; 
+    }
+    .skill-category h3 {
+        font-size: 1.4rem; 
+        width: auto; 
+    }
+     .skill-category h3 i {
+        display: inline-block; 
+        margin: 0 0 0 0.5rem; 
+     }
+    .skills-grid {
+        justify-content: center; 
+    }
+    .skill-tag {
+        padding: 0.7rem 1.2rem; 
+        font-size: 0.85rem;
+    }
+    .skill-tag.wordpress-skill {
+        padding: 0.8rem 1.4rem; 
+    }
+
+    .cta-section-page { 
+        text-align: center;
+    }
+    .cta-section-page .cta-button,
+    .cta-section-page .cta-button-secondary {
+        display: block;
+        width: fit-content;
+        max-width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .cta-section-page .cta-button-secondary {
+        margin-top: 1rem; 
+    }
+}

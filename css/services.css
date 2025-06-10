@@ -1,0 +1,220 @@
+/* ============== */
+/* Services Page Specific Styles */
+/* ============== */
+
+/* General .page-content and .page-title-section are styled in style.css (global) */
+/* Static Banner is also styled globally in style.css */
+
+/* Services Page - Static Banner Section */
+.static-banner-section.neumorphic-inset { /* Targeting the one on services page */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem; /* فاصله از هدر */
+    /* Global style.css has padding: 10px; we'll make horizontal padding consistent */
+    padding: 10px 15px; /* 10px vertical, 15px horizontal */
+    box-sizing: border-box;
+    /* margin-bottom is 2rem from global style.css */
+}
+
+/* Services Page - Page Title Section */
+.page-title-section.neumorphic-inset { /* Targeting the one on services page */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top and margin-bottom are handled by inline styles in services.html */
+    /* Global style.css has padding: 2rem 0; we'll add horizontal padding */
+    padding: 2rem 15px; /* 2rem vertical, 15px horizontal */
+    box-sizing: border-box;
+}
+
+.services-page-intro {
+    padding-top: 0; /* If it follows static banner & page-title closely */
+    padding-bottom: 1.5rem; /* Space before services grid */
+    text-align: center;
+}
+
+.services-page-intro .section-subtitle { /* For the intro paragraph */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-primary);
+}
+
+.services-page-grid-section {
+    /* padding from .home-section in style.css applies if .home-section class is used */
+    /* Assuming .home-section class IS on the parent section in services.html for vertical padding */
+    /* If .services-page-grid-section itself needs to be constrained like other framed sections:
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    margin-bottom: 1.5rem; /* If it's the last major section before CTA/footer */
+    /* Also would need .neumorphic .neumorphic-outset classes in HTML for a frame */
+}
+
+.services-page-grid.services-three-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; 
+}
+
+/* For desktop view - 3 columns */
+@media (min-width: 992px) {
+    .services-page-grid.services-three-columns {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* For tablet view - 2 columns */
+@media (min-width: 768px) and (max-width: 991px) {
+    .services-page-grid.services-three-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+.service-detail-card {
+    padding: 1.5rem; 
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    min-height: 380px; 
+}
+
+.service-detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-blur)) var(--neumorphic-shadow-light),
+        calc(var(--neumorphic-shadow-distance) * 1) calc(var(--neumorphic-shadow-distance) * 1) calc(var(--neumorphic-shadow-blur)) var(--neumorphic-shadow-dark);
+}
+
+.service-detail-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 0.8rem;
+}
+
+.service-detail-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 8px;
+}
+
+.service-detail-icon i {
+    font-size: 1.4rem;
+    color: var(--text-headings); /* Consider changing to var(--brand-base-blue) */
+}
+
+.service-detail-title {
+    font-size: 1.25rem;
+    color: var(--text-headings); /* Consider changing to var(--brand-base-blue) */
+    margin-bottom: 0;
+}
+
+.service-detail-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    flex-grow: 1; 
+}
+
+.service-features-title {
+    font-size: 1rem;
+    color: var(--text-headings); /* Consider var(--brand-base-blue) */
+    margin-top: 0.5rem; 
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--neumorphic-shadow-dark);
+    display: inline-block;
+}
+
+.service-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.service-features-list li {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    text-align: right; 
+}
+
+.service-features-list li i {
+    color: var(--text-headings); /* Consider var(--brand-base-blue) */
+    margin-left: 0.6rem; 
+    font-size: 0.8rem;
+    padding-top: 0.15em; 
+    flex-shrink: 0;
+}
+
+.service-customization-note {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: auto; 
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--neumorphic-shadow-dark);
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+
+@media (max-width: 767px) {
+    /* Responsive adjustments for framed sections on Services Page */
+    .static-banner-section.neumorphic-inset {
+        /* Horizontal padding (15px) is already set from desktop rule */
+        /* margin-top can be adjusted if needed for mobile */
+        margin-top: 1rem;
+    }
+    .page-title-section.neumorphic-inset {
+        /* Horizontal padding (15px) is already set from desktop rule */
+        /* Inline margins from HTML will apply, or can be overridden here for mobile */
+        padding: 1.5rem 15px; /* Adjust vertical padding for mobile */
+        margin-top: 1.5rem !important; /* Override inline style for mobile if needed */
+        margin-bottom: 1rem !important; /* Override inline style for mobile if needed */
+    }
+
+    /* Other existing mobile styles from your services.css */
+    .services-page-grid.services-three-columns {
+        /* Will become 1 column due to auto-fit */
+    }
+    .service-detail-card {
+        padding: 1.25rem; 
+        min-height: auto; 
+    }
+    .service-detail-icon {
+        width: 45px;
+        height: 45px;
+    }
+    .service-detail-icon i {
+        font-size: 1.2rem;
+    }
+    .service-detail-title {
+        font-size: 1.15rem;
+    }
+    .service-detail-description {
+        font-size: 0.85rem;
+    }
+    .service-features-title {
+        font-size: 0.95rem;
+    }
+    .service-features-list li {
+        font-size: 0.8rem;
+    }
+    .service-customization-note {
+        font-size: 0.7rem;
+    }
+}
