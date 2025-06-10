@@ -490,6 +490,52 @@ document.addEventListener('DOMContentLoaded', function() {
             easing: 'ease-in-out', 
         });
     }
+
+    // Theme Toggle Functionality
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const bodyElement = document.body;
+
+    if (themeToggleBtn && bodyElement) {
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        themeToggleBtn.addEventListener('click', () => {
+            bodyElement.classList.toggle('dark-mode');
+
+            if (bodyElement.classList.contains('dark-mode')) {
+                if (themeIcon) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                }
+                themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                if (themeIcon) {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+                themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Check for saved theme preference on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            bodyElement.classList.add('dark-mode');
+            if (themeIcon) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+             bodyElement.classList.remove('dark-mode'); // Ensure it's light if no preference or light
+             if (themeIcon) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+             }
+             themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+        }
+    }
     
     console.log("وب سایت پورتفولیو با فونت IRANYekanX و پایه واکنش‌گرا آماده است!");
 });

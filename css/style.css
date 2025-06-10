@@ -55,6 +55,25 @@
     --neumorphic-shadow-blur: 12px;
 }
 
+/* Dark Mode Theme Variables */
+body.dark-mode {
+    --neumorphic-bg: #2C3037;
+    --neumorphic-shadow-light: #3E434C;
+    --neumorphic-shadow-dark: #1A1C20;
+    --neumorphic-inset-shadow-dark: #1A1C20;
+    --neumorphic-inset-shadow-light: #3E434C;
+
+    --text-primary: #ECF0F3;
+    --text-secondary: #D1D9E6;
+    --text-headings: #FFFFFF;
+    --text-link-hover: #B0B8C5;
+
+    /* Specific component overrides for dark mode */
+    --header-specific-bg-dark: rgba(44, 48, 55, 0.75);
+    --footer-specific-border-dark: #3E434C;
+    --popup-overlay-specific-bg-dark: rgba(44, 48, 55, 0.85);
+}
+
 html {
     font-size: 15px;
     scroll-behavior: smooth;
@@ -181,7 +200,8 @@ ul {
     
     padding: 10px 25px; 
     
-    background-color: rgba(236, 240, 243, 0.75); 
+    /* background-color: rgba(236, 240, 243, 0.75);  Light mode header bg */
+    background-color: var(--header-bg, rgba(236, 240, 243, 0.75));
     backdrop-filter: blur(8px);                  
     -webkit-backdrop-filter: blur(8px);          
     
@@ -190,6 +210,9 @@ ul {
     box-shadow: 
         calc(var(--neumorphic-shadow-distance) * -0.5) calc(var(--neumorphic-shadow-distance) * -0.5) calc(var(--neumorphic-shadow-blur) * 0.66) var(--neumorphic-shadow-light), 
         var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); 
+}
+body.dark-mode .main-header {
+    background-color: var(--header-specific-bg-dark);
 }
 
 .main-header .container {
@@ -244,6 +267,49 @@ ul {
         inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
         inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
 }
+
+/* Theme Toggle Button Styles */
+.main-nav ul li.theme-toggle-item {
+    margin-right: 10px; /* Align with other nav items */
+    display: flex; /* For centering icon if needed */
+    align-items: center; /* For centering icon if needed */
+}
+
+#theme-toggle-btn {
+    padding: 0.5rem 0.8rem; /* Match padding of nav links */
+    font-size: 0.95rem; /* Match font size of nav links' text, icon will be this size */
+    color: var(--text-secondary); /* Match nav link color */
+    background-color: transparent; /* Explicitly set for consistency */
+    border: none; /* Remove default button border */
+    cursor: pointer;
+    border-radius: var(--border-radius); /* Match nav links */
+    line-height: 1; /* Ensure icon is vertically centered if it has weird spacing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) ease; /* Match nav links */
+}
+
+#theme-toggle-btn i {
+    transition: color var(--transition-speed) ease; /* Smooth color transition for icon */
+}
+
+#theme-toggle-btn:hover {
+    color: var(--text-headings);
+    background-color: var(--neumorphic-bg);
+    box-shadow:
+        calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
+        var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+}
+
+#theme-toggle-btn:active { /* Using :active for click feedback, similar to .neumorphic-flat:active */
+    color: var(--text-headings); /* Keep text color consistent on active */
+    background-color: var(--neumorphic-bg); /* Keep background consistent */
+    box-shadow:
+        inset calc(var(--neumorphic-shadow-distance) * -0.7) calc(var(--neumorphic-shadow-distance) * -0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-light),
+        inset calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-dark);
+}
+
 
 /* Hide mobile-specific nav item on desktop */
 .nav-order-button-item-mobile {
@@ -351,7 +417,10 @@ ul {
 /* ============== */
 /* Footer (Global) */
 /* ============== */
-.main-footer {background-color: var(--neumorphic-bg); color: var(--text-secondary); text-align: center; padding: 2rem 0 1.5rem 0; margin-top: auto; position: relative; border-top: 1px solid var(--neumorphic-shadow-dark);}
+.main-footer {background-color: var(--neumorphic-bg); color: var(--text-secondary); text-align: center; padding: 2rem 0 1.5rem 0; margin-top: auto; position: relative; border-top: 1px solid var(--footer-border, var(--neumorphic-shadow-dark));}
+body.dark-mode .main-footer {
+    border-top-color: var(--footer-specific-border-dark);
+}
 .footer-content {}
 .social-links {margin-bottom: 1.25rem;}
 .social-links a {margin: 0 0.6rem; font-size: 1.3rem; color: var(--text-secondary); display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%;}
@@ -400,7 +469,8 @@ html[dir="rtl"] .back-to-top {left: auto; right: 1.5rem;}
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(236, 240, 243, 0.85); 
+    /* background-color: rgba(236, 240, 243, 0.85); Light mode popup overlay */
+    background-color: var(--popup-overlay-bg, rgba(236, 240, 243, 0.85));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -410,6 +480,9 @@ html[dir="rtl"] .back-to-top {left: auto; right: 1.5rem;}
     transition: opacity 0.3s ease, visibility 0s linear 0.3s;
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
+}
+body.dark-mode .popup-overlay {
+    background-color: var(--popup-overlay-specific-bg-dark);
 }
 
 .popup-overlay.is-active {
@@ -572,6 +645,33 @@ body.popup-open {
     .main-nav ul li a.active {
         color: var(--text-headings);
         background-color: var(--neumorphic-bg);
+        box-shadow:
+            inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
+            inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+    }
+
+    /* Theme Toggle Mobile Adjustments */
+    .main-nav ul li.theme-toggle-item {
+        margin-right: 0; /* Remove desktop margin */
+        width: 100%;     /* Occupy full width like other mobile items */
+        padding: 0 0.5rem; /* Add horizontal padding to contain the button */
+        box-sizing: border-box; /* Ensure padding is included in width */
+    }
+    #theme-toggle-btn {
+        display: block;
+        width: 100%; /* Make button take full width of its parent li */
+        margin: 0.3rem 0; /* Match mobile nav links' top/bottom margin, remove side margin as parent handles padding */
+        padding: 0.8rem 1rem; /* Match mobile nav link padding */
+        text-align: center; /* Center icon */
+        border-radius: calc(var(--border-radius) - 4px); /* Match mobile nav link border-radius */
+    }
+    /* Ensure hover and active effects for mobile also use the same neumorphic style as links */
+    #theme-toggle-btn:hover {
+         box-shadow:
+            calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
+            var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+    }
+     #theme-toggle-btn:active {
         box-shadow:
             inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
             inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
