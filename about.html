@@ -42,19 +42,19 @@
     </header>
 
     <main class="page-content">
-        <section class="page-title-section neumorphic neumorphic-inset" data-aos="fade-in" data-aos-duration="800">
+        <section class="page-title-section card animate-on-scroll"> {/* Made page title a card and animatable */}
             <div class="container">
                 <h1>درباره من</h1>
             </div>
         </section>
 
-        <section class="home-section about-page-intro">
+        <section class="home-section about-page-intro animate-on-scroll">
             <div class="container">
-                <div class="about-me-content">
-                    <div class="about-me-image neumorphic neumorphic-inset profile-page-image" data-aos="fade-up" data-aos-delay="100" data-aos-offset="100">
+                <div class="about-me-content animate-on-scroll-stagger-parent"> {/* Stagger parent for image and text */}
+                    <div class="about-me-image card profile-page-image animate-stagger-item"> {/* Image also a card */}
                         <img src="assets/images/Ben-profile.webp" alt="تصویر پروفایل بنیامین چودری">
                     </div>
-                    <div class="about-me-text">
+                    <div class="about-me-text animate-stagger-item">
                         <h2>سلام! من بنیامین هستم.</h2>
                         <p class="justified-text">طراح و توسعه‌دهنده‌ی وب، با تمرکز روی ساخت وب‌سایت‌هایی که هم زیبا باشند، هم کاربردی. علاقه‌ی من به طراحی دیجیتال از ترکیب دو چیز شروع شد: فناوری و هنر. همین ترکیب باعث شد بتونم توی پروژه‌ها هم به ظاهر کار توجه کنم، هم به تجربه‌ی کاربر و عملکرد پشت صحنه.</p>
                         <p class="justified-text">در مسیر کاری‌ام، با برندهای کوچک و بزرگ همکاری کردم؛ از پورتفولیوهای شخصی گرفته تا فروشگاه‌های آنلاین و وب‌سایت‌های شرکتی. همیشه تلاش کردم تا طراحی‌ای ارائه بدم که هم حرفه‌ای به نظر برسه و هم نتیجه‌محور باشه — سایتی که دیده بشه، کاربر باهاش ارتباط بگیره و در نهایت برای کسب‌وکار ارزش ایجاد کنه.</p>
@@ -65,49 +65,50 @@
             </div>
         </section>
 
-        <section class="home-section skills-section neumorphic neumorphic-outset" id="my-skills-detailed">
+        <section class="home-section skills-section card animate-on-scroll" id="my-skills-detailed"> {/* Skills section as a card */}
             <div class="container">
                 <h2>مهارت‌های تخصصی من</h2>
                 <p class="section-subtitle justified-text" style="font-size: 1.05rem;">ابزارهایی که برای طراحی، توسعه و پیاده‌سازی ایده‌ها استفاده می‌کنم:</p>
-                <div class="skill-category">
-                    <h3><i class="fas fa-palette" data-aos="zoom-in" data-aos-delay="50" data-aos-offset="100"></i> طراحی (Design)</h3>
+
+                <div class="skill-category animate-on-scroll-stagger-parent"> {/* Stagger parent for each category's items */}
+                    <h3><i class="fas fa-palette"></i> طراحی (Design)</h3>
                     <div class="skills-grid">
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="100" data-aos-offset="50"><i class="fas fa-object-group"></i> UI/UX</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="150" data-aos-offset="50"><i class="fas fa-mobile-alt"></i> طراحی واکنش‌گرا (Responsive)</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="200" data-aos-offset="50"><i class="fab fa-figma"></i> Figma</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="250" data-aos-offset="50"><i class="fas fa-bezier-curve"></i> Illustrator</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="300" data-aos-offset="50"><i class="fas fa-image"></i> Photoshop</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="350" data-aos-offset="50"><i class="fas fa-sitemap"></i> وایرفریمینگ و تجربه کاربر</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fas fa-object-group"></i> UI/UX</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fas fa-mobile-alt"></i> طراحی واکنش‌گرا (Responsive)</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fab fa-figma"></i> Figma</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fas fa-bezier-curve"></i> Illustrator</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fas fa-image"></i> Photoshop</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fas fa-sitemap"></i> وایرفریمینگ و تجربه کاربر</div>
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3><i class="fas fa-code" data-aos="zoom-in" data-aos-delay="50" data-aos-offset="100"></i> توسعه و پلتفرم‌ها</h3>
+                <div class="skill-category animate-on-scroll-stagger-parent">
+                    <h3><i class="fas fa-code"></i> توسعه و پلتفرم‌ها</h3>
                     <div class="skills-grid">
-                        <div class="skill-tag neumorphic wordpress-skill" data-aos="fade-up" data-aos-delay="100" data-aos-offset="50"><i class="fab fa-wordpress"></i> WordPress</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="150" data-aos-offset="50"><i class="fab fa-html5"></i> HTML5</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="200" data-aos-offset="50"><i class="fab fa-css3-alt"></i> CSS3</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="250" data-aos-offset="50"><i class="fab fa-js-square"></i> JavaScript</div>
+                        <div class="skill-tag card wordpress-skill animate-stagger-item"><i class="fab fa-wordpress"></i> WordPress</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fab fa-html5"></i> HTML5</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fab fa-js-square"></i> JavaScript</div>
                     </div>
                 </div>
 
-                 <div class="skill-category">
-                    <h3><i class="fas fa-tools" data-aos="zoom-in" data-aos-delay="50" data-aos-offset="100"></i> سایر مهارت‌ها</h3>
+                 <div class="skill-category animate-on-scroll-stagger-parent">
+                    <h3><i class="fas fa-tools"></i> سایر مهارت‌ها</h3>
                     <div class="skills-grid">
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="100" data-aos-offset="50"><i class="fas fa-search"></i> سئو پایه (SEO)</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="150" data-aos-offset="50"><i class="fas fa-tasks"></i> مدیریت پروژه (پایه)</div>
-                        <div class="skill-tag neumorphic" data-aos="fade-up" data-aos-delay="200" data-aos-offset="50"><i class="fas fa-clipboard-list"></i> تحلیل نیاز</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fas fa-search"></i> سئو پایه (SEO)</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fas fa-tasks"></i> مدیریت پروژه (پایه)</div>
+                        <div class="skill-tag card animate-stagger-item"><i class="fas fa-clipboard-list"></i> تحلیل نیاز</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="home-section cta-section-page">
+        <section class="home-section cta-section-page card animate-on-scroll"> {/* CTA section as a card */}
             <div class="container">
                 <h2>آماده‌ی شروع یک پروژه جدید هستید؟</h2>
                 <p class="justified-text">اگر ایده‌ای دارید یا مایلید درباره‌ی یک همکاری بیشتر صحبت کنیم، خوشحال می‌شم پیام بدید. می‌تونید نمونه‌کارها رو ببینید یا مستقیماً با من در ارتباط باشید.</p>
                 <a href="contact.html" class="cta-button">بیاید صحبت کنیم</a>
-                <a href="portfolio.html" class="cta-button cta-button-secondary neumorphic neumorphic-flat">مشاهده نمونه‌کارها</a>
+                <a href="portfolio.html" class="cta-button cta-button-secondary">مشاهده نمونه‌کارها</a> {/* Removed neumorphic classes */}
             </div>
         </section>
 
@@ -117,14 +118,15 @@
         <div class="container">
             <div class="footer-content">
                 <div class="social-links">
-                    <a href="https://www.instagram.com/benyamins.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام" class="neumorphic neumorphic-flat social-icon-instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://t.me/benyaminscom" target="_blank" rel="noopener noreferrer" aria-label="تلگرام" class="neumorphic neumorphic-flat social-icon-telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="https://wa.me/+989991785354" target="_blank" rel="noopener noreferrer" aria-label="واتس‌اپ" class="neumorphic neumorphic-flat social-icon-whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.linkedin.com/in/benjamin-chodari/" target="_blank" rel="noopener noreferrer" aria-label="لینکدین" class="neumorphic neumorphic-flat social-icon-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    {/* Neumorphic classes will be removed from footer social links globally if not already done */}
+                    <a href="https://www.instagram.com/benyamins.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام" class="social-icon-instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/benyaminscom" target="_blank" rel="noopener noreferrer" aria-label="تلگرام" class="social-icon-telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://wa.me/+989991785354" target="_blank" rel="noopener noreferrer" aria-label="واتس‌اپ" class="social-icon-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/benjamin-chodari/" target="_blank" rel="noopener noreferrer" aria-label="لینکدین" class="social-icon-linkedin"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <p class="copyright-text">&copy; <span id="current-year"></span> تمام حقوق برای بنیامین چودری محفوظ است.</p>
             </div>
-            <a href="#top" class="back-to-top neumorphic neumorphic-flat" aria-label="بازگشت به بالا">
+            <a href="#top" class="back-to-top" aria-label="بازگشت به بالا"> {/* Removed neumorphic class */}
                 <i class="fas fa-arrow-up"></i>
             </a>
         </div>

@@ -41,9 +41,9 @@
     </header>
 
     <main class="page-content">
-        <article class="single-post-container neumorphic neumorphic-outset">
+        <article class="single-post-container card animate-on-scroll"> {/* Added card, animate-on-scroll, removed neumorphic */}
             <header class="single-post-header">
-                <div class="single-post-image-wrapper neumorphic neumorphic-inset">
+                <div class="single-post-image-wrapper card"> {/* Added card, removed neumorphic */}
                     <img src="assets/images/blog-featured-1.png" alt="تصویر شاخص مقاله نمونه ۱">
                 </div>
                 <h1 class="single-post-title">عنوان مقاله جذاب و طولانی نمونه اول</h1>
@@ -59,7 +59,7 @@
                 <h2>یک تیتر داخلی (H2) در متن مقاله</h2>
                 <p>در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.</p>
                 
-                <figure class="neumorphic neumorphic-inset post-image-inset" data-aos="fade-up" data-aos-offset="100">
+                <figure class="card post-image-inset animate-on-scroll"> {/* Added card, animate-on-scroll, removed neumorphic & data-aos */}
                     <img src="assets/images/blog-post-1.png" alt="یک تصویر میانی در مقاله">
                     <figcaption>توضیحی برای تصویر میانی (اختیاری)</figcaption>
                 </figure>
@@ -72,7 +72,7 @@
                     <li>آیتم لیست سوم</li>
                 </ul>
 
-                <blockquote data-aos="fade-in" data-aos-offset="100">
+                <blockquote class="animate-on-scroll"> {/* Added animate-on-scroll, removed data-aos */}
                     <p>"این یک نقل قول نمونه برای نمایش در متن مقاله است. نقل قول‌ها می‌توانند به برجسته کردن نکات مهم کمک کنند."</p>
                     <footer>— <cite>منبع نقل قول</cite></footer>
                 </blockquote>
@@ -81,16 +81,17 @@
             </div>
 
             <footer class="single-post-footer">
-                <div class="post-tags" data-aos="fade-up" data-aos-offset="50">
+                <div class="post-tags animate-on-scroll"> {/* Added animate-on-scroll, removed data-aos */}
                     <strong>تگ‌ها:</strong>
-                    <a href="#" class="skill-tag neumorphic neumorphic-flat" data-aos="fade-up" data-aos-delay="50" data-aos-offset="50">وردپرس</a>
-                    <a href="#" class="skill-tag neumorphic neumorphic-flat" data-aos="fade-up" data-aos-delay="100" data-aos-offset="50">طراحی</a>
-                    <a href="#" class="skill-tag neumorphic neumorphic-flat" data-aos="fade-up" data-aos-delay="150" data-aos-offset="50">آموزش</a>
+                    {/* Removed data-aos and neumorphic from skill-tags. They are already card-styled by .pagination rule, or need specific .skill-tag styling later */}
+                    <a href="#" class="skill-tag card">وردپرس</a>
+                    <a href="#" class="skill-tag card">طراحی</a>
+                    <a href="#" class="skill-tag card">آموزش</a>
                 </div>
             </footer>
         </article>
 
-        <section class="home-section cta-section-page">
+        <section class="home-section cta-section-page card animate-on-scroll"> {/* Added card, animate-on-scroll */}
             <div class="container">
                 <h2>از این مقاله لذت بردید؟</h2>
                 <p class="justified-text">اگر سوالی در مورد این مطلب دارید یا می‌خواهید در مورد پروژه‌های طراحی وب بیشتر بدانید، با من در تماس باشید.</p>

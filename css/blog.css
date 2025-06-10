@@ -2,20 +2,18 @@
 /* Blog Page Styles (Listing & Single Post) */
 /* ============== */
 
-/* General .page-content and .page-title-section are styled in style.css (global) */
-
-/* Blog Page specific styles for Page Title Section */
-.blog-page .page-title-section.neumorphic-inset { /* Targeting only on blog listing page */
+/* .page-title-section is now a .card, styled globally */
+/*
+.blog-page .page-title-section.neumorphic-inset {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1.5rem; /* فاصله از هدر */
-    /* global style.css provides padding: 2rem 0 and margin-bottom: 2.5rem */
-    padding-left: 15px; /* Adding horizontal padding */
-    padding-right: 15px; /* Adding horizontal padding */
+    margin-top: 1.5rem;
+    padding-left: 15px;
+    padding-right: 15px;
     box-sizing: border-box;
 }
-
+*/
 
 /* == Blog Listing Page Styles == */
 .blog-listing-intro {
@@ -27,47 +25,42 @@
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    color: var(--text-primary);
+    /* color: var(--text-primary); // Inherits from global .section-subtitle */
 }
 
 .blog-listing-section {
-    /* padding from .home-section in style.css applies if this class is used on the section */
-    /* This section itself is not framed. Individual posts are. */
+    /* Layout, padding from .home-section in style.css if used */
 }
 
 .blog-posts-list {
     display: grid;
-    gap: 3rem;
+    gap: 2.5rem; /* Slightly reduced gap */
 }
 
+/* .blog-post-item is now a .card, styled globally */
 .blog-post-item {
     display: flex;
     gap: 2rem;
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    transition: all var(--transition-speed) ease-out;
+    /* padding: 1.5rem; // From global .card */
+    /* border-radius: var(--border-radius-medium); // From global .card */
+    /* transition: all var(--transition-speed-normal) ease-out; // From global .card */
 }
 
-.blog-post-item:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow:
-        calc(var(--neumorphic-shadow-distance) * -1.2) calc(var(--neumorphic-shadow-distance) * -1.2) calc(var(--neumorphic-shadow-blur) * 1.2) var(--neumorphic-shadow-light),
-        calc(var(--neumorphic-shadow-distance) * 1.2) calc(var(--neumorphic-shadow-distance) * 1.2) calc(var(--neumorphic-shadow-blur) * 1.2) var(--neumorphic-shadow-dark);
-}
+/* .blog-post-item:hover is handled by global .card:hover */
 
 .blog-post-item-image {
-    flex: 0 0 280px;
-    height: 200px;
+    flex: 0 0 250px; /* Slightly smaller image */
+    height: 180px;   /* Slightly smaller image */
     overflow: hidden;
-    border-radius: calc(var(--border-radius) - 4px);
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05), inset -2px -2px 5px rgba(255,255,255,0.6);
+    border-radius: var(--border-radius-medium); /* Use new var */
+    /* box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05), inset -2px -2px 5px rgba(255,255,255,0.6); // Removed old shadow */
 }
 
 .blog-post-item-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform var(--transition-speed-normal) ease; /* Use new var */
 }
 .blog-post-item:hover .blog-post-item-image img {
     transform: scale(1.05);
@@ -85,30 +78,34 @@
 }
 
 .blog-post-item-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem; /* Adjusted size */
     margin-bottom: 0.3rem;
 }
 .blog-post-item-title a {
-    color: var(--text-headings); /* Consider var(--brand-base-blue) */
+    color: var(--text-light); /* Use new text var */
     text-decoration: none;
 }
+body.dark-mode .blog-post-item-title a { color: var(--text-dark); }
 .blog-post-item-title a:hover {
-    color: var(--text-link-hover); /* Consider var(--brand-base-blue-hover) */
+    color: var(--primary-accent);
 }
 
 .blog-post-item-meta {
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    /* color: var(--text-secondary); // Inherits from global text styles with opacity */
+    opacity: 0.7;
 }
 .blog-post-item-meta .author {
     font-weight: bold;
-    color: var(--text-primary); /* Consider var(--brand-base-blue) */
+    color: var(--text-light); /* Use new text var */
 }
+body.dark-mode .blog-post-item-meta .author { color: var(--text-dark); }
+
 
 .blog-post-item-excerpt {
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Adjusted size */
     line-height: 1.7;
-    color: var(--text-secondary);
+    /* color: var(--text-secondary); // Inherits global p color */
     margin-bottom: 1.5rem;
     flex-grow: 1;
 }
@@ -116,108 +113,50 @@
     margin-bottom: 0;
 }
 
-.blog-post-item-content .cta-button-small { /* This uses .cta-button class too */
-    padding: 0.6rem 1.5rem;
-    font-size: 0.85rem;
-    align-self: flex-start;
-    width: auto;
-    display: inline-block;
-}
-.blog-post-item-content .cta-button-small i {
-    font-size: 0.7em;
-    margin-right: 0.4rem;
-}
+/* .blog-post-item-content .cta-button-small is styled globally */
 
-/* Pagination Styles */
-.pagination.neumorphic.neumorphic-outset { /* Added .neumorphic.neumorphic-outset for specificity if needed */
-    max-width: 1200px; /* To align its background with other constrained sections */
-    margin-left: auto;
-    margin-right: auto;
+
+/* Pagination Styles - .pagination is now a .card, styled globally */
+/* Old neumorphic styles for .pagination and .page-number are removed/commented out */
+/* New .page-number styles are in style.css */
+.pagination {
     margin-top: 3rem;
-    margin-bottom: 1.5rem; /* Space before CTA section */
-    padding: 0.75rem;
-    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    padding: 0.75rem; /* Keep specific padding for pagination card */
     display: flex;
     justify-content: center;
-    box-sizing: border-box;
-    /* .neumorphic & .neumorphic-outset applied in HTML */
 }
-.pagination ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.pagination ul { /* Already styled in style.css, this is for layout */
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
-.pagination .page-number {
-    display: inline-block;
-    padding: 0.6rem 0.9rem;
-    min-width: 38px;
-    text-align: center;
-    text-decoration: none;
-    color: var(--text-secondary); /* Consider var(--brand-base-blue) */
-    border-radius: calc(var(--border-radius) - 4px);
-    background-color: var(--neumorphic-bg);
-    box-shadow:
-        calc(var(--neumorphic-shadow-distance) * -0.3) calc(var(--neumorphic-shadow-distance) * -0.3) calc(var(--neumorphic-shadow-blur) * 0.3) var(--neumorphic-shadow-light),
-        calc(var(--neumorphic-shadow-distance) * 0.3) calc(var(--neumorphic-shadow-distance) * 0.3) calc(var(--neumorphic-shadow-blur) * 0.3) var(--neumorphic-shadow-dark);
-    transition: all var(--transition-speed) ease;
-}
-.pagination .page-number:hover,
-.pagination .page-number.active {
-    color: var(--text-headings); /* Consider var(--brand-electric-blue) or base-blue */
-    box-shadow:
-        inset calc(var(--neumorphic-shadow-distance) * -0.5) calc(var(--neumorphic-shadow-distance) * -0.5) calc(var(--neumorphic-shadow-blur) * 0.5) var(--neumorphic-shadow-light),
-        inset calc(var(--neumorphic-shadow-distance) * 0.5) calc(var(--neumorphic-shadow-distance) * 0.5) calc(var(--neumorphic-shadow-blur) * 0.5) var(--neumorphic-shadow-dark);
-}
-.pagination .page-number.active {
-    font-weight: bold;
-    color: var(--brand-base-blue); /* Active page number in blue */
-    background-color: var(--neumorphic-inset-shadow-dark); /* Or a subtle pastel blue tint */
-}
-.pagination .page-number.disabled {
-    color: var(--text-secondary);
-    opacity: 0.6;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-.pagination .page-number.disabled:hover {
-    background-color: var(--neumorphic-bg);
-    color: var(--text-secondary);
-}
-.pagination .dots {
-    padding: 0.6rem 0.3rem;
-    box-shadow: none;
-    background-color: transparent;
-}
+/* .pagination .page-number, .active, .disabled, .dots styling in style.css */
 
 
 /* == Single Post Page Styles == */
-.single-post-page .page-title-section { /* This rule hides the main page title on single post pages */
+.single-post-page .page-title-section {
     display: none;
 }
-.single-post-container { /* Main container for the article content */
-    max-width: 800px; /* Good width for readability */
-    margin: 2rem auto 3rem auto; /* Vertical spacing and centering */
-    padding: 2rem; /* Internal padding from its neomorphic frame */
-    box-sizing: border-box; /* Added for consistency */
-    /* .neumorphic & .neumorphic-outset applied in HTML */
-    /* No changes needed here for overall frame spacing, it's already well-handled */
+/* .single-post-container is now a .card, styled globally */
+.single-post-container {
+    max-width: 800px;
+    margin: 2rem auto 3rem auto;
+    padding: 2rem;
 }
 .single-post-header {
     margin-bottom: 2rem;
     text-align: right;
 }
-.single-post-image-wrapper {
+.single-post-image-wrapper { /* This is also a .card now */
     width: 100%; 
     max-width: 100%; 
     height: auto;
     aspect-ratio: 16 / 9; 
     overflow: hidden;
-    border-radius: var(--border-radius);
+    /* border-radius: var(--border-radius-medium); // From .card */
     margin: 0 auto 2rem auto; 
-    padding: 10px;
+    padding: 0; /* Remove padding if image fills card */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -227,37 +166,40 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: calc(var(--border-radius) - 4px);
+    border-radius: var(--border-radius-medium); /* Match card radius */
 }
 .single-post-title {
-    font-size: 2.2rem;
-    color: var(--text-headings); /* Consider var(--brand-base-blue) */
+    font-size: 2.2rem; /* Slightly smaller than h1 */
+    color: var(--text-light);
     line-height: 1.3;
     margin-top: 0;
     margin-bottom: 0.5rem;
 }
+body.dark-mode .single-post-title { color: var(--text-dark); }
+
 .single-post-meta {
     font-size: 0.85rem;
-    color: var(--text-secondary);
+    /* color: var(--text-secondary); // Inherits with opacity */
+    opacity: 0.7;
     margin-bottom: 1.5rem;
 }
 .single-post-meta .author {
     font-weight: bold;
-    color: var(--text-primary); /* Consider var(--brand-base-blue) */
+    color: var(--text-light);
 }
+body.dark-mode .single-post-meta .author { color: var(--text-dark); }
+
 .single-post-meta .post-categories a {
-    color: var(--text-secondary); /* Links in meta can be secondary or brand-base-blue */
-    text-decoration: none;
+    /* color: var(--text-secondary); // Inherits link style */
 }
 .single-post-meta .post-categories a:hover {
-    color: var(--text-headings); /* Or brand-base-blue-hover */
-    text-decoration: underline;
+    /* color: var(--text-headings); // Inherits link hover style */
 }
 
-.post-content {
-    font-size: 1.05rem;
-    line-height: 1.9;
-    color: var(--text-primary);
+.post-content { /* Typography inherits from global p, h2-h6, ul, ol, blockquote etc. */
+    /* font-size: 1.05rem; // Global p */
+    /* line-height: 1.9; // Global p */
+    /* color: var(--text-primary); // Global p */
 }
 .post-content p {
     margin-bottom: 1.5em;
@@ -265,71 +207,52 @@
 .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6 {
     margin-top: 2em;
     margin-bottom: 1em;
-    color: var(--text-headings); /* Consider var(--brand-base-blue) for subheadings */
+    /* color: var(--text-headings); // Global headings */
     line-height: 1.4;
 }
-.post-content h2 { font-size: 1.7rem; }
-.post-content h3 { font-size: 1.4rem; }
-.post-content h4 { font-size: 1.15rem; }
+.post-content h2 { font-size: 1.7rem; } /* Matches global h3 */
+.post-content h3 { font-size: 1.4rem; } /* Slightly smaller than global h4 */
+.post-content h4 { font-size: 1.15rem; } /* Slightly smaller than global h4 */
 
-.post-content ul, .post-content ol {
-    margin: 0 2rem 1.5em 0;
-    padding-right: 1.5rem;
-}
-.post-content ul li, .post-content ol li {
-    margin-bottom: 0.5em;
-    line-height: 1.7;
-}
-.post-content ul { list-style-type: disc; }
-.post-content ol { list-style-type: decimal; }
+/* .post-content ul, .post-content ol styling from global */
 
-.post-content blockquote {
+/* .post-content blockquote styling from global */
+.post-content blockquote { /* Specific margin for RTL */
     margin: 1.5em 1.5rem 1.5em 0;
-    padding: 1rem 1.5rem;
-    border-right: 4px solid var(--neumorphic-shadow-dark); /* Consider var(--brand-pastel-blue) or var(--brand-base-blue) for border */
-    background-color: var(--neumorphic-bg);
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-    font-style: italic;
-    color: var(--text-secondary);
-    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.05), inset -1px -1px 3px rgba(255,255,255,0.5);
-}
-.post-content blockquote p {
-    margin-bottom: 0.5em;
-}
-.post-content blockquote footer {
-    font-style: normal;
-    font-size: 0.9em;
-    text-align: left;
-}
-.post-content blockquote footer cite {
-    font-weight: bold;
 }
 
-.post-image-inset {
+
+.post-image-inset { /* This is also a .card now */
     margin: 2rem auto;
-    padding: 8px;
+    padding: 0; /* Image fills card */
     max-width: 90%;
 }
 .post-image-inset img {
-    border-radius: calc(var(--border-radius) - 8px);
+    border-radius: var(--border-radius-medium); /* Match card radius */
 }
 .post-image-inset figcaption {
     font-size: 0.8rem;
     text-align: center;
-    color: var(--text-secondary);
+    /* color: var(--text-secondary); // Inherits with opacity */
+    opacity: 0.7;
     margin-top: 0.5rem;
 }
 
 .single-post-footer {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--neumorphic-shadow-dark);
+    border-top: 1px solid rgba(0,0,0,0.1); /* New border color */
 }
+body.dark-mode .single-post-footer { border-top-color: rgba(255,255,255,0.1); }
+
 .post-tags strong {
-    color: var(--text-headings);
+    color: var(--text-light); /* Use new var */
     margin-left: 0.5rem;
 }
-.post-tags .skill-tag { /* These are links, will inherit global 'a' blue color */
+body.dark-mode .post-tags strong { color: var(--text-dark); }
+
+/* .post-tags .skill-tag is now a .card, styled globally */
+.post-tags .skill-tag {
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
     padding: 0.4rem 0.8rem;
@@ -339,14 +262,13 @@
 /* Responsive adjustments for Blog Pages */
 @media (max-width: 767px) {
     /* Blog Listing Page - Mobile */
-    .blog-page .page-title-section.neumorphic-inset { /* Responsive for blog listing page title */
+    .blog-page .page-title-section {
         padding: 1.5rem 15px;
         margin-top: 1rem;
         margin-bottom: 2rem;
     }
-    .pagination.neumorphic.neumorphic-outset { /* Responsive for pagination */
-        margin-bottom: 1rem; /* Adjust bottom margin for mobile */
-        /* Horizontal margins (15px) not added here as parent .container provides general page padding */
+    .pagination {
+        margin-bottom: 1rem;
     }
 
     .blog-post-item {
@@ -388,12 +310,11 @@
         margin-left: auto; 
         margin-right: auto; 
         margin-bottom: 1.5rem; 
-        padding: 10px; 
-        border-radius: var(--border-radius); 
-        aspect-ratio: 16 / 9; 
+        padding: 0; /* No padding if image fills card */
+        /* border-radius: var(--border-radius-medium); // From global .card */
     }
     .single-post-image-wrapper img {
-        border-radius: calc(var(--border-radius) - 4px); 
+        border-radius: var(--border-radius-medium);
     }
     .single-post-title {
         font-size: 1.8rem;
@@ -410,9 +331,9 @@
         max-width: 100%; 
         margin-left: 0; 
         margin-right: 0;
-        padding: 6px; 
+        padding: 0;
     }
     .post-image-inset img {
-        border-radius: calc(var(--border-radius) - 6px); 
+        border-radius: var(--border-radius-medium);
     }
 }

@@ -53,55 +53,54 @@
     </header>
 
     <main>
-        <section class="static-banner-section neumorphic neumorphic-inset" aria-label="بنر اصلی">
+        <section class="static-banner-section parallax-bg" aria-label="بنر اصلی" style="background-image: url('assets/images/home-banner.webp'); /* Ensure this path is correct */">
             <div class="static-banner-image-container">
-                <a href="contact.html">
-                    <img src="assets/images/home-banner.webp" alt="بنر اصلی طراحی وب سایت حرفه‌ای" width="1200" height="300">
-                </a>
+                <!-- Content inside banner, if any, or this can be purely a bg section -->
+                 <a href="contact.html" style="display:block; height: 300px;"> <!-- Link wrapper for clickability -->
+                    <!-- img tag removed as it's a background now -->
+                 </a>
             </div>
         </section>
 
-        <section class="hero-section">
+        <section class="hero-section animate-on-scroll">
             <div class="container hero-content">
-                <h1>طراحی وب‌سایت حرفه‌ای با بنیامین</h1>
-                <p class="subtitle justified-text" data-aos="fade-up" data-aos-delay="200">در دنیای دیجیتال امروز،
+                <h1 class="scroll-move" data-scroll-speed="0.1">طراحی وب‌سایت حرفه‌ای با بنیامین</h1>
+                <p class="subtitle justified-text animate-on-scroll" data-aos-delay="200">در دنیای دیجیتال امروز،
                     وب‌سایت شما نماینده‌ی برندتان است. من، بنیامین چودری، با تخصص در طراحی وب‌سایت‌های مدرن، سریع و
                     کاربرپسند، به شما کمک می‌کنم تا حضور آنلاین قوی و مؤثری داشته باشید.</p>
-                <a href="portfolio.html" class="cta-button" data-aos="fade-up" data-aos-delay="300">مشاهده
+                <a href="portfolio.html" class="cta-button animate-on-scroll" data-aos-delay="300">مشاهده
                     نمونه‌کارها</a>
             </div>
         </section>
 
-        <section class="home-section about-me-section neumorphic neumorphic-outset" id="about-me-home">
+        <section class="home-section about-me-section card animate-on-scroll" id="about-me-home">
             <div class="container">
                 <h2>درباره من</h2>
                 <div class="about-me-content">
-                    <div class="about-me-image neumorphic neumorphic-inset">
+                    <div class="about-me-image card animate-stagger-item"> {/* Making image a card too */}
                         <img src="assets/images/ben.webp" alt="تصویر بنیامین چودری" loading="lazy" width="300" height="300">
                     </div>
-                    <div class="about-me-text">
+                    <div class="about-me-text animate-stagger-item">
                         <h3>بنیامین چودری</h3>
                         <p class="justified-text">با سال‌ها تجربه در طراحی وب‌سایت‌های متنوع، از سایت‌های شخصی گرفته تا
                             فروشگاه‌های آنلاین، تمرکز من بر ایجاد تجربه‌ای متمایز برای کاربران است. ترکیب زیبایی‌شناسی،
                             عملکرد فنی و بهینه‌سازی برای موتورهای جستجو، سه‌گانه‌ای است که در هر پروژه به آن پایبندم.
                         </p>
-                        <a href="about.html" class="cta-button cta-button-small" style="margin-top: 1rem;"
-                            data-aos="fade-up" data-aos-offset="50" data-aos-delay="100">بیشتر درباره من</a>
+                        <a href="about.html" class="cta-button cta-button-small" style="margin-top: 1rem;">بیشتر درباره من</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="home-section services-section-home" id="services-home">
+        <section class="home-section services-section-home animate-on-scroll animate-on-scroll-stagger-parent" id="services-home">
             <div class="container">
                 <h2>خدمات من</h2>
                 <p class="section-subtitle justified-text"
                     style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">هر کسب‌وکاری نیازهای خاص خود را
                     دارد. من خدمات متنوعی ارائه می‌دهم تا پاسخگوی این نیازها باشم:</p>
                 <div class="services-grid">
-                    <div class="service-card neumorphic">
-                        <div class="service-card-icon neumorphic neumorphic-inset" data-aos="zoom-in"
-                            data-aos-delay="50" data-aos-offset="100">
+                    <div class="service-card card animate-stagger-item">
+                        <div class="service-card-icon">
                             <i class="fas fa-id-card"></i>
                         </div>
                         <h3 class="service-card-title">طراحی سایت شخصی و پورتفولیو</h3>
@@ -113,24 +112,22 @@
                             <li><i class="fas fa-check-circle"></i> بهینه برای برندسازی شخصی</li>
                         </ul>
                     </div>
-                    <div class="service-card neumorphic">
-                        <div class="service-card-icon neumorphic neumorphic-inset" data-aos="zoom-in"
-                            data-aos-delay="50" data-aos-offset="100">
+                    <div class="service-card card animate-stagger-item">
+                        <div class="service-card-icon">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
                         <h3 class="service-card-title">طراحی فروشگاه اینترنتی</h3>
                         <p class="service-card-description">با تمرکز بر تجربه خرید آسان و بهینه‌سازی برای فروش بیشتر.
                         </p>
-                        <ul class="service-features" data-aos="fade-in" data-aos-delay="50" data-aos-offset="100">
+                        <ul class="service-features">
                             <li><i class="fas fa-check-circle"></i> سبد خرید و اتصال به درگاه</li>
                             <li><i class="fas fa-check-circle"></i> مدیریت آسان محصولات</li>
                             <li><i class="fas fa-check-circle"></i> طراحی کاربرپسند برای افزایش فروش</li>
                             <li><i class="fas fa-check-circle"></i> گزارشات فروش و تحلیل</li>
                         </ul>
                     </div>
-                    <div class="service-card neumorphic">
-                        <div class="service-card-icon neumorphic neumorphic-inset" data-aos="zoom-in"
-                            data-aos-delay="50" data-aos-offset="100">
+                    <div class="service-card card animate-stagger-item">
+                        <div class="service-card-icon">
                             <i class="fas fa-building"></i>
                         </div>
                         <h3 class="service-card-title">طراحی سایت شرکتی</h3>
@@ -147,15 +144,14 @@
             </div>
         </section>
 
-        <section class="home-section" id="featured-projects">
+        <section class="home-section animate-on-scroll animate-on-scroll-stagger-parent" id="featured-projects">
             <div class="container">
                 <h2>نمونه‌کارها</h2>
                 <p class="section-subtitle justified-text" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
                     برخی از پروژه‌هایی که با افتخار
                     اجرا کرده‌ام:</p>
                 <div class="card-grid">
-                    <article class="card neumorphic neumorphic-outset interactive-card" data-aos="fade-up" data-aos-delay="200"
-                        data-aos-offset="50">
+                    <article class="card interactive-card animate-stagger-item">
                         <a href="ava-digital.html" class="portfolio-card-link-home"
                             aria-label="مشاهده جزئیات پروژه فروشگاه آوا دیجیتال">
                             <img src="assets/portfolio-images/5-project-feature.webp" alt="طراحی سایت فروشگاهی آوا دیجیتال" loading="lazy" width="500" height="375">
@@ -164,8 +160,7 @@
                             <p>تجربه خریدی سریع و آسان و مطمئن با مدیریت کامل محصولات و سفارش‌ها.</p>
                         </a>
                     </article>
-                    <article class="card neumorphic neumorphic-outset interactive-card" data-aos="fade-up" data-aos-delay="100"
-                        data-aos-offset="50">
+                    <article class="card interactive-card animate-stagger-item">
                         <a href="personal-video-editor.html" class="portfolio-card-link-home">
                              <img src="assets/portfolio-images/1-project-feature.webp" alt="طراحی سایت پرسونال برند آرش کاظمی" loading="lazy" width="500" height="375">
                             <h3 class="portfolio-card-title">طراحی سایت آرش کاظمی</h3>
@@ -173,8 +168,7 @@
                             <p>وب‌سایتی برای نمایش حرفه‌ای مهارت‌های تدوین ویدیو.</p>
                         </a>
                     </article>
-                    <article class="card neumorphic neumorphic-outset interactive-card" data-aos="fade-up" data-aos-delay="300"
-                        data-aos-offset="50">
+                    <article class="card interactive-card animate-stagger-item">
                         <a href="moovy-studio.html" class="portfolio-card-link-home">
                              <img src="assets/portfolio-images/3-project-feature.webp" alt="طراحی سایت مووی استودیو" loading="lazy" width="500" height="375">
                             <h3 class="portfolio-card-title">طراحی سایت مووی استودیو</h3>
@@ -187,7 +181,7 @@
             </div>
         </section>
 
-        <section class="home-section cta-contact-section neumorphic neumorphic-outset" id="contact-home">
+        <section class="home-section cta-contact-section card animate-on-scroll" id="contact-home">
             <div class="container">
                 <h2>تماس با من</h2>
                 <p class="cta-subtitle justified-text">اگر به دنبال طراحی وب‌سایتی حرفه‌ای و متناسب با نیازهای خود

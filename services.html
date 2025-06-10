@@ -42,20 +42,20 @@
     </header>
 
     <main class="page-content">
-        <section class="static-banner-section neumorphic neumorphic-inset" aria-label="بنر خدمات">
+        <section class="static-banner-section card animate-on-scroll" aria-label="بنر خدمات">
             <div class="static-banner-image-container">
                 <a> <img src="assets/images/about-banner.webp" alt="بنر صفحه خدمات طراحی سایت وردپرس">
                 </a>
             </div>
         </section>
 
-        <section class="page-title-section neumorphic neumorphic-inset" style="margin-top: 2.5rem; margin-bottom: 1.5rem;" data-aos="fade-in" data-aos-duration="800">
+        <section class="page-title-section card animate-on-scroll" style="margin-top: 2.5rem; margin-bottom: 1.5rem;">
             <div class="container">
                 <h1>خدمات تخصصی طراحی سایت وردپرس</h1>
             </div>
         </section>
 
-        <section class="home-section services-page-intro">
+        <section class="home-section services-page-intro animate-on-scroll">
             <div class="container">
                 <p class="section-subtitle justified-text" style="font-size: 1.15rem; line-height: 1.9;">
                     با افتخار اعلام می‌کنم که تمام پروژه‌های طراحی وب‌سایتی که انجام می‌دهم، مبتنی بر وردپرس هستند؛ محبوب‌ترین سیستم مدیریت محتوا در دنیا. چرا؟ چون سریع، قابل‌اعتماد، توسعه‌پذیر و در دسترس است.
@@ -69,12 +69,12 @@
             </div>
         </section>
 
-        <section class="home-section services-page-grid-section">
+        <section class="home-section services-page-grid-section animate-on-scroll animate-on-scroll-stagger-parent">
             <div class="container">
                 <div class="services-page-grid services-three-columns">
-                    <div class="service-detail-card neumorphic neumorphic-outset" data-aos="fade-up" data-aos-delay="100" data-aos-offset="100">
+                    <div class="service-detail-card card animate-stagger-item"> {/* Ensure .card is primary style */}
                         <div class="service-detail-card-header">
-                            <div class="service-detail-icon neumorphic neumorphic-inset" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-shopping-cart"></i></div>
+                            <div class="service-detail-icon"><i class="fas fa-shopping-cart"></i></div> {/* Removed .card from icon div if it's not meant to be a card itself */}
                             <h3 class="service-detail-title">طراحی سایت فروشگاهی (تجارت الکترونیک)</h3>
                         </div>
                         <p class="service-detail-description justified-text">اگر محصولی برای فروش دارید، باید یک فروشگاه آنلاین داشته باشید که قابل اعتماد، سریع و کاربرپسند باشد. طراحی فروشگاه اینترنتی، سیستم‌های رزرو آنلاین و صفحات فرود (Landing Page) اختصاصی برای محصولات یا کمپین‌ها، از تخصص‌های من است.</p>
@@ -90,9 +90,9 @@
                         <p class="service-customization-note justified-text"><strong>توجه:</strong> ویژگی‌های نهایی و هزینه پروژه پس از بررسی دقیق نیازهای شما مشخص خواهد شد.</p>
                     </div>
 
-                    <div class="service-detail-card neumorphic neumorphic-outset" data-aos="fade-up" data-aos-delay="200" data-aos-offset="100">
+                    <div class="service-detail-card card animate-stagger-item">
                         <div class="service-detail-card-header">
-                            <div class="service-detail-icon neumorphic neumorphic-inset" data-aos="zoom-in" data-aos-delay="300"><i class="fas fa-building"></i></div>
+                            <div class="service-detail-icon"><i class="fas fa-building"></i></div>
                             <h3 class="service-detail-title">طراحی سایت شرکتی و معرفی کسب‌وکار</h3>
                         </div>
                         <p class="service-detail-description justified-text">مهم نیست شرکت شما تازه‌تأسیس است یا چند سال سابقه دارد؛ یک سایت حرفه‌ای می‌تواند اعتبار، خدمات و تخصص شما را به خوبی معرفی کند. این خدمات همچنین برای انواع مشاغل خدماتی، کافه‌ها و رستوران‌ها، و نیز وب‌سایت‌های شخصی و پورتفولیو برای نمایش حرفه‌ای مهارت‌ها مناسب است.</p>
@@ -108,9 +108,9 @@
                         <p class="service-customization-note justified-text"><strong>توجه:</strong> ویژگی‌های نهایی و هزینه پروژه پس از بررسی دقیق نیازهای شما مشخص خواهد شد.</p>
                     </div>
 
-                    <div class="service-detail-card neumorphic neumorphic-outset" data-aos="fade-up" data-aos-delay="300" data-aos-offset="100">
+                    <div class="service-detail-card card animate-stagger-item">
                         <div class="service-detail-card-header">
-                            <div class="service-detail-icon neumorphic neumorphic-inset" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-newspaper"></i></div>
+                            <div class="service-detail-icon"><i class="fas fa-newspaper"></i></div>
                             <h3 class="service-detail-title">طراحی سایت خبری و مجله آنلاین</h3>
                         </div>
                         <p class="service-detail-description justified-text">اگر قصد انتشار محتوا به‌صورت منظم دارید یا رسانه‌ای هستید، داشتن یک وب‌سایت ساختاریافته برای نشر اخبار و مقالات اهمیت زیادی دارد.</p>
@@ -129,7 +129,7 @@
             </div>
         </section>
 
-        <section class="home-section cta-section-page">
+        <section class="home-section cta-section-page card animate-on-scroll">
             <div class="container">
                 <h2>ایده‌ای دارید یا به مشاوره نیاز دارید؟</h2>
                 <p class="justified-text">فرقی نمی‌کنه پروژه در چه مرحله‌ای باشه — اگر نیاز به مشاوره یا طراحی دارید، همین حالا می‌تونید با من در تماس باشید. من اینجام تا کمک کنم سایت شما هم حرفه‌ای، هم قابل رشد و هم قابل اعتماد باشه.</p>

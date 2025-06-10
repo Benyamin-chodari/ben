@@ -27,36 +27,70 @@
 }
 
 :root {
-    /* Light Neumorphic Theme Colors */
+    /* New Light Mode Palette */
+    --bg-light: #F0F2F5;
+    --text-light: #222222;
+    --primary-accent: #4A90E2;
+    --secondary-accent: #00C896;
+    --card-bg-light: rgba(255, 255, 255, 0.6);
+    --card-shadow: 0 8px 30px rgba(0,0,0,0.12);
+
+    /* Base font settings */
+    --font-primary: 'IRANYekanX', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+
+    /* Transitions */
+    --transition-speed-fast: 0.2s;
+    --transition-speed-normal: 0.3s;
+
+    /* Borders */
+    --border-radius-medium: 12px;
+
+    /* Old Neumorphic Theme Colors - Commented Out */
+    /*
     --neumorphic-bg: #ECF0F3;
     --neumorphic-shadow-light: #FFFFFF;
     --neumorphic-shadow-dark: #D1D9E6;
     --neumorphic-inset-shadow-dark: #BEC3C9;
     --neumorphic-inset-shadow-light: #FAFBFC;
 
-    --text-primary: #333740;
-    --text-secondary: #5A5F6B;
-    --text-headings: #2C3037;
-    --text-link-hover: #1a1c20; 
+    --text-primary: #333740; // Will be replaced by --text-light or --text-dark
+    --text-secondary: #5A5F6B; // Will be replaced
+    --text-headings: #2C3037; // Will be replaced
+    --text-link-hover: #1a1c20; // Will be replaced
+    */
 
-    /* Brand Colors for Social Icons */
+    /* Brand Colors for Social Icons - Kept */
     --social-instagram: #E4405F;
     --social-telegram: #0088cc;
     --social-whatsapp: #25D366;
     --social-linkedin: #0A66C2;
 
-    /* Font Updated to IRANYekanX */
-    --font-primary: 'IRANYekanX', sans-serif;
-
-    /* Transitions & Border Radius */
+    /* Old Transitions & Border Radius - Commented Out */
+    /*
     --transition-speed: 0.25s; 
-    --border-radius: 12px;
+    --border-radius: 12px; // Replaced by --border-radius-medium
     --neumorphic-shadow-distance: 6px;
     --neumorphic-shadow-blur: 12px;
+    */
 }
 
 /* Dark Mode Theme Variables */
 body.dark-mode {
+    /* New Dark Mode Palette */
+    --bg-dark: #121417;
+    --text-dark: #EDEDED;
+    --card-bg-dark: rgba(30, 30, 30, 0.5);
+    /* Primary and secondary accents can often remain the same, or be adjusted if needed */
+    /* Ensure new light mode variables are available or overridden */
+    --bg-light: var(--bg-dark); /* Override light var with dark value */
+    --text-light: var(--text-dark); /* Override light var with dark value */
+    --card-bg-light: var(--card-bg-dark); /* Override light var with dark value */
+
+
+    /* Old Neumorphic Dark Mode Variables - Commented out */
+    /*
     --neumorphic-bg: #2C3037;
     --neumorphic-shadow-light: #3E434C;
     --neumorphic-shadow-dark: #1A1C20;
@@ -67,32 +101,47 @@ body.dark-mode {
     --text-secondary: #D1D9E6;
     --text-headings: #FFFFFF;
     --text-link-hover: #B0B8C5;
+    */
 
-    /* Specific component overrides for dark mode */
+    /* Specific component overrides for dark mode - Commented out for now, will be re-evaluated with new theme */
+    /*
     --header-specific-bg-dark: rgba(44, 48, 55, 0.75);
     --footer-specific-border-dark: #3E434C;
     --popup-overlay-specific-bg-dark: rgba(44, 48, 55, 0.85);
+    */
 }
 
 html {
-    font-size: 15px;
+    font-size: 16px; /* Updated from 15px */
     scroll-behavior: smooth;
     direction: rtl;
     font-family: var(--font-primary);
 }
 
 body {
-    background-color: var(--neumorphic-bg); 
-    color: var(--text-primary);
-    line-height: 1.7;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.6; /* Modern line height */
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    /* Add transition for background color for theme toggle */
+    transition: background-color var(--transition-speed-normal) ease, color var(--transition-speed-normal) ease;
+}
+body.dark-mode { /* This rule is for applying the new dark mode body colors */
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
 }
 
 main {
     flex-grow: 1;
+    padding-top: 1rem; /* Add some space below sticky header */
+    padding-bottom: 1rem; /* Add some space above footer */
 }
 
 .page-content {
@@ -100,46 +149,145 @@ main {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--text-headings);
-    font-weight: bold;
-    margin-bottom: 0.75em;
-    line-height: 1.4;
+    color: var(--text-light); /* Updated from --text-headings to --text-light */
+    font-weight: var(--font-weight-bold); /* Use variable */
+    margin-bottom: 0.6em;     /* Adjusted margin */
+    line-height: 1.3;         /* Adjusted line-height */
+}
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--text-dark);
 }
 
-h1 { font-size: 2.25rem; }
-h2 { font-size: 1.875rem; }
-h3 { font-size: 1.5rem; }
+h1 { font-size: 2.75rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.75rem; }
 h4 { font-size: 1.25rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
 
 p {
-    margin-bottom: 1em;
-    font-size: 1rem;
+    margin-bottom: 1.25em; /* Increased spacing */
+    font-size: 1.05rem;   /* Slightly larger paragraph text */
+    line-height: 1.7;     /* Increased line height for paragraphs */
 }
 .justified-text {
     text-align: justify;
 }
 
 a {
-    color: var(--text-secondary);
+    color: var(--primary-accent);
     text-decoration: none;
-    transition: color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease;
+    transition: color var(--transition-speed-fast) ease;
 }
 
 a:hover,
 a:focus {
-    color: var(--text-link-hover); 
+    color: #3B7BC4; /* Darker shade of --primary-accent #4A90E2 */
+    text-decoration: underline;
 }
+body.dark-mode a:hover,
+body.dark-mode a:focus {
+    color: #67A7E9; /* Lighter shade for dark mode hover */
+}
+
+
+/* Links within body text - more subtle */
+p a, .post-content a, .service-card-description a { /* Add other content wrapper classes if needed */
+    color: var(--text-light); /* Inherit text color by default or use a subtle accent */
+    text-decoration: underline;
+    text-decoration-color: var(--primary-accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color var(--transition-speed-fast) ease, text-decoration-color var(--transition-speed-fast) ease;
+}
+body.dark-mode p a, body.dark-mode .post-content a, body.dark-mode .service-card-description a {
+    color: var(--text-dark);
+    text-decoration-color: var(--primary-accent); /* Primary accent might need dark mode version */
+}
+
+p a:hover, p a:focus,
+.post-content a:hover, .post-content a:focus,
+.service-card-description a:hover, .service-card-description a:focus {
+    color: var(--primary-accent);
+    text-decoration-color: var(--primary-accent); /* Darker shade on hover */
+    text-decoration: underline; /* Ensure underline remains on hover */
+}
+body.dark-mode p a:hover, body.dark-mode p a:focus,
+body.dark-mode .post-content a:hover, body.dark-mode .post-content a:focus,
+body.dark-mode .service-card-description a:hover, body.dark-mode .service-card-description a:focus {
+    color: var(--primary-accent); /* Lighter shade for dark mode hover */
+    text-decoration-color: var(--primary-accent); /* Lighter shade for dark mode hover */
+}
+
 
 img {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: var(--border-radius); 
+    border-radius: var(--border-radius-medium); /* Updated to new var */
 }
 
-ul {
-    list-style: none;
+ul, ol {
+    list-style: none; /* Remove default if custom styling is applied, or use 'disc'/'decimal' */
+    padding-left: 1.5rem; /* Indentation for lists */
+    margin-bottom: 1em;
 }
+ul li, ol li {
+    margin-bottom: 0.5em;
+    line-height: 1.7;
+}
+ul li::before { /* Example custom disc marker */
+    content: '•';
+    color: var(--primary-accent);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+blockquote {
+    border-left: 4px solid var(--primary-accent);
+    padding: 0.5em 1em;
+    margin: 1.5em 0;
+    font-style: italic;
+    color: var(--text-light); /* Use new text vars */
+    opacity: 0.85;
+    background-color: rgba(0,0,0,0.02); /* Very subtle background */
+}
+body.dark-mode blockquote {
+    color: var(--text-dark);
+    background-color: rgba(255,255,255,0.02);
+}
+blockquote footer {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    font-style: normal;
+    opacity: 0.8;
+}
+
+code, pre {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+pre {
+    padding: 1em;
+    overflow-x: auto;
+    margin-bottom: 1em;
+}
+body.dark-mode code, body.dark-mode pre {
+    background-color: rgba(255,255,255,0.08);
+}
+
+strong, b { font-weight: var(--font-weight-bold); }
+em, i { font-style: italic; }
 
 .container {
     width: 90%;
@@ -149,81 +297,285 @@ ul {
 }
 
 /* ============== */
-/* Neumorphic Base Styles & Utilities */
+/* Neumorphic Base Styles & Utilities - Commented Out */
 /* ============== */
+/*
 .neumorphic {
-    background: var(--neumorphic-bg);
-    border-radius: var(--border-radius);
-    transition: box-shadow var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease-in-out;
+    background: var(--neumorphic-bg); // Uses old variable
+    border-radius: var(--border-radius); // Uses old variable
+    transition: box-shadow var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease-in-out; // Uses old variable
 }
 .neumorphic-outset {
     box-shadow:
         calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-        var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+        var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);  // Uses old variables
 }
 .neumorphic-outset:active,
 .neumorphic-outset.active { 
     box-shadow:
         inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-        inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+        inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); // Uses old variables
 }
 .neumorphic-inset {
     box-shadow:
         inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-        inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+        inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); // Uses old variables
 }
 .neumorphic-flat:hover,
 .neumorphic-flat:focus {
      box-shadow: 
         calc(var(--neumorphic-shadow-distance) * -0.7) calc(var(--neumorphic-shadow-distance) * -0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-light),
-        calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-dark);
+        calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-dark); // Uses old variables
 }
 .neumorphic-flat:active {
     box-shadow:
         inset calc(var(--neumorphic-shadow-distance) * -0.7) calc(var(--neumorphic-shadow-distance) * -0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-light),
-        inset calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-dark);
+        inset calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-dark); // Uses old variables
 }
+*/
 
 /* ============== */
 /* Header & Navigation (Global) */
 /* ============== */
 
 .main-header {
-    position: sticky; 
-    top: 1rem; 
-    z-index: 1000; 
-    
-    width: calc(100% - 2rem); 
-    max-width: 1250px;        
-    margin-left: auto;
-    margin-right: auto;
-    
-    padding: 10px 25px; 
-    
-    /* background-color: rgba(236, 240, 243, 0.75);  Light mode header bg */
-    background-color: var(--header-bg, rgba(236, 240, 243, 0.75));
-    backdrop-filter: blur(8px);                  
-    -webkit-backdrop-filter: blur(8px);          
-    
-    border-radius: 50px; 
-    
-    box-shadow: 
-        calc(var(--neumorphic-shadow-distance) * -0.5) calc(var(--neumorphic-shadow-distance) * -0.5) calc(var(--neumorphic-shadow-blur) * 0.66) var(--neumorphic-shadow-light), 
-        var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(240, 242, 245, 0.75); /* Light mode header bg (using --bg-light with alpha) */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.75rem 1rem; /* Adjust padding */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: background-color var(--transition-speed-normal) ease;
+    /* Removed: width, max-width, margin-left, margin-right, border-radius: 50px, old padding, old top */
 }
 body.dark-mode .main-header {
-    background-color: var(--header-specific-bg-dark);
+    background-color: rgba(18, 20, 23, 0.75); /* Dark mode header bg (using --bg-dark with alpha) */
+    /* Consider using a variable like --header-bg-dark-transparent if defined */
 }
 
 .main-header .container {
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    width: 100%;      
-    max-width: none;  
-    margin: 0;        
-    padding: 0;       
+    width: 100%;
+    max-width: 1200px; /* Or other desired max-width */
+    margin: 0 auto;
+    /* padding: 0 15px; // This was the old container padding, header padding is now on .main-header */
 }
+
+/* ================= */
+/* Animation Keyframes */
+/* ================= */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Classes for scroll animations */
+.animate-on-scroll {
+    opacity: 0; /* Start hidden, will be animated by JS */
+    will-change: opacity, transform; /* Performance hint */
+}
+
+.animate-on-scroll.is-visible {
+    animation: slideInUp 0.8s ease-out forwards;
+}
+
+.animate-stagger-item {
+    opacity: 0; /* Start hidden */
+    will-change: opacity, transform;
+}
+.animate-stagger-item.is-visible {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+
+/* ================= */
+/* Card Base Style (Glassmorphism) */
+/* ================= */
+.card,
+.service-card, /* From services grid */
+.about-me-section, /* Large background sections as cards */
+.cta-contact-section,
+.skills-section, /* From about page */
+.project-intro-details, /* Single Project */
+.project-intro-image,  /* Single Project */
+.project-tech-content, /* Single Project */
+.other-project-card,   /* Single Project */
+.blog-post-item,       /* Blog list */
+.single-post-container, /* Single Post */
+.contact-info-block,   /* Contact Page */
+.contact-form-wrapper, /* Contact Page */
+.popup-dialog,         /* Popup */
+.pagination            /* Blog pagination bar */
+{
+    background: var(--card-bg-light);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--card-shadow);
+    padding: 1.5rem;
+    transition: background-color var(--transition-speed-normal) ease,
+                box-shadow var(--transition-speed-normal) ease,
+                transform var(--transition-speed-normal) ease; /* Added transform for hover */
+    /* border: 1px solid rgba(255, 255, 255, 0.12); Optional border for light mode */
+    margin-bottom: 1.5rem; /* Common spacing for cards */
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15); /* Enhanced shadow */
+}
+
+body.dark-mode .card,
+body.dark-mode .service-card,
+body.dark-mode .about-me-section,
+body.dark-mode .cta-contact-section,
+body.dark-mode .skills-section,
+body.dark-mode .project-intro-details,
+body.dark-mode .project-intro-image,
+body.dark-mode .project-tech-content,
+body.dark-mode .other-project-card,
+body.dark-mode .blog-post-item,
+body.dark-mode .single-post-container,
+body.dark-mode .contact-info-block,
+body.dark-mode .contact-form-wrapper,
+body.dark-mode .popup-dialog,
+body.dark-mode .pagination {
+    background: var(--card-bg-dark);
+    /* border: 1px solid rgba(255, 255, 255, 0.07); Optional border for dark mode */
+}
+body.dark-mode .card:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25); /* Darker enhanced shadow for dark mode */
+}
+
+
+/* Specific padding adjustments if needed for certain cards */
+.about-me-section, .cta-contact-section, .skills-section, .project-tech-content {
+    padding: 2rem 1.5rem; /* Larger sections might need more padding */
+}
+.popup-dialog { padding: 2rem; }
+
+
+/* ================= */
+/* Button Component Styling (Soft Brutalism) */
+/* ================= */
+.cta-button,
+.form-submit-button, /* Generic class for form submits */
+.popup-submit-button,
+.contact-form-home .form-submit-button, /* Specific existing class */
+.contact-page-form .form-submit-button  /* Specific existing class */
+{
+    display: inline-block;
+    background-color: var(--primary-accent);
+    color: #FFFFFF;
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    padding: 0.8rem 2rem;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Slightly softer than card-shadow for buttons */
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform var(--transition-speed-fast) ease, background-color var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease;
+    text-align: center;
+}
+
+.cta-button:hover, .cta-button:focus,
+.form-submit-button:hover, .form-submit-button:focus,
+.popup-submit-button:hover, .popup-submit-button:focus,
+.contact-form-home .form-submit-button:hover, .contact-form-home .form-submit-button:focus,
+.contact-page-form .form-submit-button:hover, .contact-page-form .form-submit-button:focus {
+    transform: scale(1.03) translateY(-2px);
+    background-color: #3B7BC4; /* Darker shade of #4A90E2 */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    color: #FFFFFF;
+}
+
+.cta-button-small { /* Adjust padding for smaller buttons */
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+}
+
+.cta-button-secondary {
+    background-color: transparent;
+    color: var(--primary-accent);
+    border: 2px solid var(--primary-accent);
+    padding: calc(0.8rem - 2px) calc(2rem - 2px); /* Adjust padding for border */
+}
+body.dark-mode .cta-button-secondary {
+    color: var(--primary-accent); /* Or a lighter accent for dark mode */
+    border-color: var(--primary-accent);
+}
+
+.cta-button-secondary:hover, .cta-button-secondary:focus {
+    background-color: var(--primary-accent);
+    color: #FFFFFF;
+    transform: scale(1.03) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Back to top button - specific styling */
+.back-to-top {
+    background-color: var(--card-bg-light);
+    color: var(--text-light);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-speed-fast) ease;
+}
+body.dark-mode .back-to-top {
+    background-color: var(--card-bg-dark);
+    color: var(--text-dark);
+}
+.back-to-top:hover {
+    background-color: var(--primary-accent);
+    color: #FFFFFF;
+    transform: translateY(-3px);
+}
+
+/* Pagination links - style as buttons */
+.pagination a.page-number {
+    background-color: var(--card-bg-light);
+    color: var(--text-light);
+    border-radius: var(--border-radius-medium);
+    padding: 0.5rem 0.9rem;
+    margin: 0 0.2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all var(--transition-speed-fast) ease;
+    font-size: 0.9rem;
+}
+body.dark-mode .pagination a.page-number {
+    background-color: var(--card-bg-dark);
+    color: var(--text-dark);
+}
+.pagination a.page-number:hover {
+    background-color: var(--primary-accent);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.pagination a.page-number.active {
+    background-color: var(--primary-accent);
+    color: #FFFFFF;
+    font-weight: var(--font-weight-bold);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.pagination a.page-number.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 
 .logo {
     font-size: 1.5rem; 
@@ -245,70 +597,78 @@ body.dark-mode .main-header {
 .main-nav ul li:last-child {margin-right: 0;}
 .main-nav ul li a {
     font-size: 0.95rem;
-    color: var(--text-secondary);
-    font-weight: normal;
-    padding: 0.5rem 0.8rem;
-    border-radius: var(--border-radius);
-    transition: all var(--transition-speed) ease; 
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-medium);
+    transition: color var(--transition-speed-fast) ease, background-color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease;
     display: block; 
     background-color: transparent; 
 }
+body.dark-mode .main-nav ul li a { /* Explicitly set text color for dark mode nav links */
+    color: var(--text-dark);
+}
+
 .main-nav ul li a:hover {
-    color: var(--text-headings);
-    background-color: var(--neumorphic-bg); 
-    box-shadow:
-        calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-        var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+    color: var(--primary-accent);
+    background-color: rgba(0,0,0,0.03); /* Subtle background on hover for light mode */
+    transform: scale(1.05);
 }
+body.dark-mode .main-nav ul li a:hover {
+    color: var(--primary-accent); /* Primary accent might need a dark mode version if too bright */
+    background-color: rgba(255,255,255,0.05); /* Subtle background on hover for dark mode */
+}
+
 .main-nav ul li a.active {
-    color: var(--text-headings);
-    background-color: var(--neumorphic-bg); 
-    box-shadow:
-        inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-        inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+    color: var(--primary-accent);
+    font-weight: var(--font-weight-bold);
+    background-color: transparent; /* No specific background for active, just color and weight */
 }
+body.dark-mode .main-nav ul li a.active {
+     color: var(--primary-accent); /* Ensure active link color is also updated if primary-accent changes for dark mode */
+}
+
 
 /* Theme Toggle Button Styles */
 .main-nav ul li.theme-toggle-item {
-    margin-right: 10px; /* Align with other nav items */
-    display: flex; /* For centering icon if needed */
-    align-items: center; /* For centering icon if needed */
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
 
 #theme-toggle-btn {
-    padding: 0.5rem 0.8rem; /* Match padding of nav links */
-    font-size: 0.95rem; /* Match font size of nav links' text, icon will be this size */
-    color: var(--text-secondary); /* Match nav link color */
-    background-color: transparent; /* Explicitly set for consistency */
-    border: none; /* Remove default button border */
+    font-size: 0.95rem;
+    color: var(--text-light); /* Use new text variables */
+    background-color: transparent;
+    border: none;
     cursor: pointer;
-    border-radius: var(--border-radius); /* Match nav links */
-    line-height: 1; /* Ensure icon is vertically centered if it has weird spacing */
+    padding: 0.5rem 1rem; /* Consistent padding */
+    border-radius: var(--border-radius-medium);
+    line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--transition-speed) ease; /* Match nav links */
+    transition: color var(--transition-speed-fast) ease, background-color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease;
+}
+body.dark-mode #theme-toggle-btn {
+    color: var(--text-dark);
 }
 
 #theme-toggle-btn i {
-    transition: color var(--transition-speed) ease; /* Smooth color transition for icon */
+    transition: color var(--transition-speed-normal) ease;
 }
 
 #theme-toggle-btn:hover {
-    color: var(--text-headings);
-    background-color: var(--neumorphic-bg);
-    box-shadow:
-        calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-        var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+    color: var(--primary-accent);
+    background-color: rgba(0,0,0,0.03); /* Subtle background on hover for light mode */
+    transform: scale(1.05);
+}
+body.dark-mode #theme-toggle-btn:hover {
+    color: var(--primary-accent);
+    background-color: rgba(255,255,255,0.05); /* Subtle background on hover for dark mode */
 }
 
-#theme-toggle-btn:active { /* Using :active for click feedback, similar to .neumorphic-flat:active */
-    color: var(--text-headings); /* Keep text color consistent on active */
-    background-color: var(--neumorphic-bg); /* Keep background consistent */
-    box-shadow:
-        inset calc(var(--neumorphic-shadow-distance) * -0.7) calc(var(--neumorphic-shadow-distance) * -0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-light),
-        inset calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-distance) * 0.7) calc(var(--neumorphic-shadow-blur) * 0.7) var(--neumorphic-shadow-dark);
-}
+/* No specific :active style for theme-toggle-btn beyond hover, unless desired */
 
 
 /* Hide mobile-specific nav item on desktop */
@@ -316,41 +676,53 @@ body.dark-mode .main-header {
     display: none;
 }
 
-.menu-toggle {display: none; background: none; border: none; color: var(--text-headings); font-size: 1.8rem; cursor: pointer; padding: 0.5rem; border-radius: var(--border-radius);}
-
-#open-popup-btn { 
-    /* Desktop "Order" button styling is primarily from its HTML classes: 
-       class="cta-button cta-button-small neumorphic neumorphic-outset" 
-       and inline style for positioning: style="margin-right: auto; margin-left: 15px; order: 2;"
-       No additional global style needed here unless overriding those.
-    */
+.menu-toggle {display: none; background: none; border: none; color: var(--text-light); font-size: 1.8rem; cursor: pointer; padding: 0.5rem; border-radius: var(--border-radius-medium);}
+body.dark-mode .menu-toggle {
+    color: var(--text-dark);
 }
+
+
+/* Commenting out old #open-popup-btn styles as it will be redesigned with new button system */
+/*
+#open-popup-btn { 
+}
+*/
 
 
 /* ============== */
 /* General Page Title Section */
 /* ============== */
 .page-title-section {padding: 2rem 0; margin-bottom: 2.5rem; text-align: center;}
-.page-title-section h1 {font-size: 2.5rem; color: var(--text-headings); margin-bottom: 0;}
+.page-title-section h1 {font-size: 2.5rem; color: var(--text-light); margin-bottom: 0;} /* Updated var */
 
 /* ============== */
 /* General Home Section Styling */
 /* ============== */
 .home-section {padding: 3rem 0; text-align: center;}
-.home-section h2 {margin-bottom: 2rem; color: var(--text-headings);}
-.section-subtitle {font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto;}
+.home-section h2 {margin-bottom: 2rem; color: var(--text-light);} /* Updated var */
+.section-subtitle {font-size: 1.05rem; color: var(--text-light); opacity: 0.75; margin-bottom: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.7;} /* Adjusted for new base p size */
+body.dark-mode .section-subtitle {
+    color: var(--text-dark);
+    opacity: 0.75;
+}
+
 
 /* ============== */
 /* Static Banner */
 /* ============== */
+/* Commenting out old static banner as it relies on neumorphic vars heavily */
+/* The .static-banner-section might become a .card itself or have a similar style */
+/*
 .static-banner-section {width: 100%; padding: 10px; background-color: var(--neumorphic-bg); border-radius: var(--border-radius); margin-bottom: 2rem;}
 .static-banner-image-container {max-width: 1200px; margin: 0 auto; border-radius: calc(var(--border-radius) - 4px); overflow: hidden; line-height: 0;}
 .static-banner-image-container a {display: block;}
 .static-banner-image-container img {display: block; width: 100%; aspect-ratio: 4 / 1; object-fit: cover; border-radius: calc(var(--border-radius) - 4px);}
+*/
 
 /* ============== */
-/* General CTA Button Style */
+/* General CTA Button Style - OLD STYLES COMMENTED OUT - New styles above */
 /* ============== */
+/*
 .cta-button {display: inline-block; background: var(--neumorphic-bg); color: var(--text-headings); font-family: var(--font-primary); font-weight: bold; font-size: 1rem; padding: 0.9rem 2rem; border-radius: 50px; letter-spacing: 0.5px; box-shadow: calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light), var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); transition: all var(--transition-speed) ease; text-decoration: none; cursor: pointer;}
 .cta-button:hover {color: var(--text-link-hover); box-shadow: calc(var(--neumorphic-shadow-distance) * -1.2) calc(var(--neumorphic-shadow-distance) * -1.2) calc(var(--neumorphic-shadow-blur) * 1.2) var(--neumorphic-shadow-light), calc(var(--neumorphic-shadow-distance) * 1.2) calc(var(--neumorphic-shadow-distance) * 1.2) calc(var(--neumorphic-shadow-blur) * 1.2) var(--neumorphic-shadow-dark);}
 .cta-button:active {box-shadow: inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light), inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); color: var(--text-secondary);}
@@ -358,10 +730,12 @@ body.dark-mode .main-header {
 .cta-button-small i {font-size: 0.7em; margin-right: 0.4rem;}
 .cta-button-secondary {color: var(--text-secondary); background: transparent; border: 2px solid var(--neumorphic-shadow-dark); padding: calc(0.9rem - 2px) calc(2rem - 2px);}
 .cta-button-secondary:hover {color: var(--text-headings); border-color: var(--text-headings);}
+*/
 
 /* ============== */
-/* General Form Group Styling */
+/* General Form Group Styling - To be refactored with new theme */
 /* ============== */
+/*
 .form-group {margin-bottom: 1.5rem; position: relative; border-radius: var(--border-radius); padding: 2px;}
 .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"], .form-group textarea, .form-group select {width: 100%; padding: 12px 15px; line-height: 1.5; border: none; background-color: transparent; color: var(--text-primary); font-family: var(--font-primary); font-size: 1rem; border-radius: calc(var(--border-radius) - 2px); outline: none; position: relative; z-index: 1;}
 .form-group input[type="text"]::placeholder, .form-group input[type="email"]::placeholder, .form-group input[type="tel"]::placeholder, .form-group textarea::placeholder {color: transparent !important;}
@@ -372,71 +746,230 @@ body.dark-mode .main-header {
 .form-group.select-wrapper {position: relative;}
 .form-group select[value=""]:not(:focus) + .form-label-placeholder {top: 12px; right: 15px; font-size: 1rem; color: var(--text-secondary); box-shadow: none; z-index: 0;}
 .form-group .select-arrow {position: absolute; top: 50%; left: 15px; transform: translateY(-50%); font-size: 0.8rem; color: var(--text-secondary); pointer-events: none; z-index: 0;}
+*/
 
 /* ============== */
 /* Home Page Specific Styles (Kept from your style5.css as requested) */
-/* ============== */
-.hero-section {min-height: auto; padding: 3rem 0;}
-.hero-content h1 {font-size: 2.5rem;} 
-.hero-content .subtitle {font-size: 1.25rem;}
+/* Home Page Specific Styles (Kept from your style5.css as requested) */
+/* These will also need updating later to use new theme variables */
+/* Styles for .about-me-section, .service-card, .cta-contact-section, .card (featured projects) */
+/* are now covered by the generic .card styling above or will be refined. */
 
-.about-me-section { padding: 3rem 15px; }
+/* ================= */
+/* Form Styling (New) */
+/* ================= */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.85rem 1rem; /* Adjusted padding */
+    line-height: 1.6;
+    background-color: rgba(255, 255, 255, 0.75); /* Slightly more opaque */
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: var(--border-radius-medium);
+    color: var(--text-light);
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    box-shadow: none;
+    transition: border-color var(--transition-speed-fast) ease, background-color var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease;
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="email"],
+body.dark-mode .form-group input[type="tel"],
+body.dark-mode .form-group textarea,
+body.dark-mode .form-group select {
+    background-color: rgba(18, 20, 23, 0.7); /* Dark input background */
+    border-color: rgba(255,255,255,0.15);
+    color: var(--text-dark);
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group input[type="email"]::placeholder,
+.form-group input[type="tel"]::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-light);
+    opacity: 0.5;
+}
+body.dark-mode .form-group input[type="text"]::placeholder,
+body.dark-mode .form-group input[type="email"]::placeholder,
+body.dark-mode .form-group input[type="tel"]::placeholder,
+body.dark-mode .form-group textarea::placeholder {
+    color: var(--text-dark);
+    opacity: 0.6;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-accent);
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.95); /* Brighter on focus */
+    box-shadow: 0 0 0 3px rgba(var(--primary-accent), 0.15); /* Subtle focus ring */
+}
+body.dark-mode .form-group input[type="text"]:focus,
+body.dark-mode .form-group input[type="email"]:focus,
+body.dark-mode .form-group input[type="tel"]:focus,
+body.dark-mode .form-group textarea:focus,
+body.dark-mode .form-group select:focus {
+    background-color: rgba(30, 30, 30, 0.8); /* Darker on focus for dark mode */
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(var(--primary-accent), 0.25);
+}
+
+.form-label-placeholder {
+    position: absolute;
+    top: 0.85rem; /* Vertically align with input padding */
+    right: 1rem;  /* Align with input padding */
+    font-size: 0.95rem;
+    color: var(--text-light);
+    opacity: 0.6;
+    pointer-events: none;
+    transition: all 0.15s ease-out;
+    background-color: transparent;
+    padding: 0 0.25rem; /* Small horizontal padding for when it moves up */
+    box-shadow: none;
+}
+body.dark-mode .form-label-placeholder {
+    color: var(--text-dark);
+    opacity: 0.7;
+}
+
+.form-group input:focus + .form-label-placeholder,
+.form-group input:not(:placeholder-shown) + .form-label-placeholder,
+.form-group textarea:focus + .form-label-placeholder,
+.form-group textarea:not(:placeholder-shown) + .form-label-placeholder {
+    top: -0.6rem; /* Move above the input border */
+    right: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--primary-accent);
+    opacity: 1;
+    background-color: var(--bg-light); /* To cover the border */
+}
+body.dark-mode .form-group input:focus + .form-label-placeholder,
+body.dark-mode .form-group input:not(:placeholder-shown) + .form-label-placeholder,
+body.dark-mode .form-group textarea:focus + .form-label-placeholder,
+body.dark-mode .form-group textarea:not(:placeholder-shown) + .form-label-placeholder {
+    background-color: var(--bg-dark);
+    color: var(--primary-accent);
+}
+
+/* Select specific styling - basic for now */
+.form-group.select-wrapper { /* If using a wrapper for select + arrow */
+    position: relative;
+}
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 2.5rem; /* Space for arrow */
+}
+.form-group .select-arrow {
+    position: absolute;
+    top: 50%;
+    left: 1rem; /* Position arrow on the left for RTL */
+    transform: translateY(-50%);
+    color: var(--primary-accent);
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+body.dark-mode .form-group .select-arrow {
+    color: var(--primary-accent);
+}
+
+/* Remove old form group styling based on neumorphism if any remains */
+.form-group.neumorphic.neumorphic-inset {
+    padding: 0 !important; /* Override old padding */
+    box-shadow: none !important; /* Override old shadow */
+    background: none !important; /* Override old background */
+}
+
+/* ============== */
+.hero-section {min-height: auto; padding: 3rem 0;} /* Keep padding */
+.hero-content h1 {font-size: 2.75rem;} /* Updated to match new h1 */
+.hero-content .subtitle {font-size: 1.15rem; line-height: 1.7;} /* Updated for better readability */
+
+/* .about-me-section already covered by generic card styles */
 .about-me-content { display: flex; align-items: center; gap: 2.5rem; text-align: right; max-width: 1000px; margin: 0 auto; }
-.about-me-image { flex-basis: 300px; flex-shrink: 0; height: 300px; border-radius: var(--border-radius); padding: 10px; display: flex; align-items: center; justify-content: center; }
-.about-me-image img { max-width: 100%; max-height: 100%; object-fit: cover; border-radius: calc(var(--border-radius) - 4px); }
+.about-me-image { flex-basis: 300px; flex-shrink: 0; height: 300px; /* border-radius: var(--border-radius); // old var */ padding: 10px; display: flex; align-items: center; justify-content: center; }
+.about-me-image img { max-width: 100%; max-height: 100%; object-fit: cover; border-radius: var(--border-radius-medium); } /* Updated var */
 .about-me-text { flex-grow: 1; }
-.about-me-text h3 { font-size: 1.75rem; margin-bottom: 1rem; }
-.about-me-text p { font-size: 1rem; line-height: 1.8; }
-.about-me-text .inline-link { padding: 0.2em 0.5em; font-weight: bold; color: var(--text-primary); }
+.about-me-text h3 { font-size: 1.75rem; margin-bottom: 1rem; } /* Matches new h3 */
+.about-me-text p { font-size: 1.05rem; line-height: 1.8; } /* Matches new p */
+.about-me-text .inline-link { padding: 0.2em 0.5em; font-weight: bold; color: var(--primary-accent); text-decoration: underline; } /* Updated var & style */
+body.dark-mode .about-me-text .inline-link { color: var(--primary-accent); } /* Primary accent usually fine for dark mode too */
+
 
 #featured-projects {} 
-.card-grid {} 
-.card {} 
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; } /* Basic grid for cards */
+/* .card {} - covered by generic card style */
 
 .services-section-home {}
-.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
-.service-card { padding: 2rem 1.5rem; text-align: center; border-radius: var(--border-radius); box-shadow: calc(var(--neumorphic-shadow-distance) * -0.3) calc(var(--neumorphic-shadow-distance) * -0.3) calc(var(--neumorphic-shadow-blur) * 0.3) var(--neumorphic-shadow-light), calc(var(--neumorphic-shadow-distance) * 0.3) calc(var(--neumorphic-shadow-distance) * 0.3) calc(var(--neumorphic-shadow-blur) * 0.3) var(--neumorphic-shadow-dark); transition: all var(--transition-speed) ease-in-out; display: flex; flex-direction: column; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+/* .service-card {} - covered by generic card style */
+/* Commenting out old .service-card specific styles that might conflict with new card style */
+/*
 .service-card:hover { transform: translateY(-5px); box-shadow: calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light), var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); }
-.service-card-icon { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; }
-.service-card-icon i { font-size: 1.8rem; color: var(--text-headings); }
-.service-card-title { font-size: 1.25rem; margin-bottom: 0.5rem; }
-.service-card-description { font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; flex-grow: 1; }
-.service-features { list-style: none; padding: 0; margin: 0 auto 1rem auto; width: fit-content; min-width: 180px; }
-.service-features li { font-size: 0.85rem; margin-bottom: 0.5rem; display: flex; align-items: center; }
-.service-features li i { color: var(--text-headings); margin-left: 0.65rem; font-size: 0.8rem; flex-shrink: 0; }
+*/
+.service-card-icon { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; padding: 10px; flex-shrink: 0; background: var(--bg-light); /* Give icon a background */ box-shadow: var(--card-shadow); } /* Example new style for icon container */
+body.dark-mode .service-card-icon { background: var(--bg-dark); }
+.service-card-icon i { font-size: 1.8rem; color: var(--primary-accent); } /* Use accent for icon */
+.service-card-title { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--text-light); } /* Use new text vars */
+body.dark-mode .service-card-title { color: var(--text-dark); }
+.service-card-description { font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; flex-grow: 1; } /* Adjusted size/lh */
+.service-features { list-style: none; padding-left: 0; margin: 0 auto 1rem auto; width: fit-content; min-width: 180px; } /* Removed padding-left from here */
+.service-features li { font-size: 0.9rem; margin-bottom: 0.5em; display: flex; align-items: center; line-height: 1.6; } /* Adjusted size/lh */
+.service-features li i { color: var(--secondary-accent); margin-left: 0.65rem; font-size: 0.8rem; flex-shrink: 0; } /* Use accent for checkmarks */
 
-.cta-contact-section { padding: 3rem 15px 2rem 15px; }
+/* .cta-contact-section is covered by generic card style */
 .cta-contact-section .cta-subtitle { font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 650px; }
-.contact-form-home { max-width: 700px; margin: 0 auto 3rem auto; overflow: hidden; }
+.contact-form-home { max-width: 700px; margin: 0 auto 1.5rem auto; overflow: hidden; } /* Reduced margin-bottom */
+/* .contact-form-home .form-submit-button is covered by generic button style */
+/*
 .contact-form-home .form-submit-button { 
     font-family: var(--font-primary); font-weight: bold; display: inline-block; padding: 0.7rem 2rem; font-size: 0.9rem; margin-top: 1rem; float: left; border-radius: var(--border-radius);
     box-shadow: calc(var(--neumorphic-shadow-distance) * -0.6) calc(var(--neumorphic-shadow-distance) * -0.6) calc(var(--neumorphic-shadow-blur) * 0.8) var(--neumorphic-shadow-light), calc(var(--neumorphic-shadow-distance) * 0.6) calc(var(--neumorphic-shadow-distance) * 0.6) calc(var(--neumorphic-shadow-blur) * 0.8) var(--neumorphic-shadow-dark);
 }
+*/
 /* End of Home Page Specific Styles from style5.css */
 
 /* ============== */
 /* Footer (Global) */
 /* ============== */
-.main-footer {background-color: var(--neumorphic-bg); color: var(--text-secondary); text-align: center; padding: 2rem 0 1.5rem 0; margin-top: auto; position: relative; border-top: 1px solid var(--footer-border, var(--neumorphic-shadow-dark));}
+.main-footer {background-color: var(--bg-light); color: var(--text-light); opacity: 0.9; text-align: center; padding: 2rem 0 1.5rem 0; margin-top: auto; position: relative; border-top: 1px solid rgba(0,0,0,0.05);} /* Updated vars, new border */
 body.dark-mode .main-footer {
-    border-top-color: var(--footer-specific-border-dark);
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 .footer-content {}
 .social-links {margin-bottom: 1.25rem;}
-.social-links a {margin: 0 0.6rem; font-size: 1.3rem; color: var(--text-secondary); display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%;}
-.social-links a:hover {color: var(--text-headings);}
-.copyright-text {font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-secondary);}
-.back-to-top {display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; color: var(--text-secondary); font-size: 1.2rem; text-decoration: none; position: absolute; bottom: 1.5rem;}
+.social-links a {margin: 0 0.6rem; font-size: 1.3rem; color: var(--text-light); opacity:0.7; display: inline-flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; background: var(--card-bg-light); box-shadow: var(--card-shadow); transition: all var(--transition-speed-fast) ease;}
+body.dark-mode .social-links a { color: var(--text-dark); background: var(--card-bg-dark); }
+.social-links a:hover {color: var(--primary-accent); transform: translateY(-2px); opacity: 1;}
+.copyright-text {font-size: 0.85rem; margin-bottom: 1rem; color: var(--text-light); opacity: 0.7;}
+body.dark-mode .copyright-text { color: var(--text-dark); }
+/* .back-to-top styles updated with new button styles above */
 html[dir="rtl"] .back-to-top {left: auto; right: 1.5rem;}
-.back-to-top:hover {color: var(--text-headings);}
+
 
 /* Form Messages Styling */
+/* These might need adjustment based on new card styles if they are placed inside cards */
 #form-messages p,
 #form-messages-home p {
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem; 
     border: 1px solid transparent;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-medium); /* Updated var */
     text-align: center;
     font-size: 0.9rem;
 }
@@ -482,7 +1015,7 @@ html[dir="rtl"] .back-to-top {left: auto; right: 1.5rem;}
     -webkit-backdrop-filter: blur(3px);
 }
 body.dark-mode .popup-overlay {
-    background-color: var(--popup-overlay-specific-bg-dark);
+    /* background-color: var(--popup-overlay-specific-bg-dark); // This var is commented out */
 }
 
 .popup-overlay.is-active {
@@ -576,13 +1109,15 @@ body.popup-open {
 }
 
 @media (max-width: 767px) { /* Mobile Styles */
+    /*
     :root {
-        --neumorphic-shadow-distance: 4px;
-        --neumorphic-shadow-blur: 8px;
+        --neumorphic-shadow-distance: 4px; // Old var
+        --neumorphic-shadow-blur: 8px; // Old var
     }
+    */
 
     .page-title-section h1 { font-size: 2rem; }
-    .static-banner-section { padding: 10px 15px; margin-bottom: 1.5rem; } 
+    /* .static-banner-section { padding: 10px 15px; margin-bottom: 1.5rem; } // Commented out as part of static banner removal */
 
     /* === MODIFIED CODE START: Mobile Header Responsiveness === */
     .main-header {
@@ -607,20 +1142,23 @@ body.popup-open {
         left: 0;
         right: 0;
         order: 4; 
-        background-color: var(--neumorphic-bg);
-        /* MODIFIED: All four corners rounded */
-        border-radius: var(--border-radius); 
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        background-color: var(--card-bg-light); /* Using card background for mobile menu */
+        /* Consider adding backdrop-filter here if using semi-transparent card-bg */
+        border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium); /* Rounded bottom corners */
+        box-shadow: var(--card-shadow); /* Using new card shadow */
         padding: 0.5rem 0; 
         position: absolute; 
-        top: calc(100% + 8px); /* 8px gap below the header */
+        top: calc(100% + 8px);
         z-index: 990; 
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px); /* Keep liked animation */
-        transition: opacity var(--transition-speed) ease-in-out, 
-                    transform var(--transition-speed) ease-in-out,
-                    visibility 0s linear var(--transition-speed); 
+        transform: translateY(-10px);
+        transition: opacity var(--transition-speed-normal) ease-in-out,
+                    transform var(--transition-speed-normal) ease-in-out,
+                    visibility 0s linear var(--transition-speed-normal);
+    }
+     body.dark-mode .main-nav {
+        background-color: var(--card-bg-dark);
     }
 
     .main-nav.is-active {
@@ -633,76 +1171,62 @@ body.popup-open {
 
     .main-nav ul { flex-direction: column; width: 100%; }
     .main-nav ul li { margin-right: 0; width: 100%; }
-    .main-nav ul li a { display: block; padding: 0.8rem 1rem; text-align: center; margin: 0.3rem 0.5rem; border-radius: calc(var(--border-radius) - 4px); }
+    .main-nav ul li a { display: block; padding: 0.8rem 1rem; text-align: center; margin: 0.3rem 0.5rem; border-radius: var(--border-radius-medium); } /* Updated var, full radius */
     
+    /* Mobile nav link hover/active styles already covered by desktop rules, can be adjusted if needed */
+    /*
     .main-nav ul li a:hover {
-        color: var(--text-headings);
-        background-color: var(--neumorphic-bg);
+        color: var(--text-headings); // old var
+        background-color: var(--neumorphic-bg); // old var
         box-shadow:
             calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-            var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+            var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); // old vars
     }
     .main-nav ul li a.active {
-        color: var(--text-headings);
-        background-color: var(--neumorphic-bg);
+        color: var(--text-headings); // old var
+        background-color: var(--neumorphic-bg); // old var
         box-shadow:
             inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-            inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+            inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); // old vars
     }
+    */
 
     /* Theme Toggle Mobile Adjustments */
     .main-nav ul li.theme-toggle-item {
-        margin-right: 0; /* Remove desktop margin */
-        width: 100%;     /* Occupy full width like other mobile items */
-        padding: 0 0.5rem; /* Add horizontal padding to contain the button */
-        box-sizing: border-box; /* Ensure padding is included in width */
+        margin-right: 0;
+        width: 100%;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
     }
     #theme-toggle-btn {
         display: block;
-        width: 100%; /* Make button take full width of its parent li */
-        margin: 0.3rem 0; /* Match mobile nav links' top/bottom margin, remove side margin as parent handles padding */
-        padding: 0.8rem 1rem; /* Match mobile nav link padding */
-        text-align: center; /* Center icon */
-        border-radius: calc(var(--border-radius) - 4px); /* Match mobile nav link border-radius */
+        width: calc(100% - 1rem); /* Match padding of parent li */
+        margin: 0.3rem auto; /* Center it like other links */
+        padding: 0.8rem 1rem;
+        text-align: center;
+        border-radius: var(--border-radius-medium); /* Consistent radius */
     }
-    /* Ensure hover and active effects for mobile also use the same neumorphic style as links */
+    /* Mobile theme toggle hover/active styles already covered by desktop rules, can be adjusted if needed */
+    /*
     #theme-toggle-btn:hover {
          box-shadow:
             calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-            var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+            var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); // old vars
     }
      #theme-toggle-btn:active {
         box-shadow:
             inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-            inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
+            inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); // old vars
     }
-    
+    */
+
     .nav-order-button-item-mobile {
-        display: block; 
-        padding: 0.25rem 0.5rem; 
-    }
-    .nav-order-button-item-mobile a#open-popup-btn-mobile { 
         display: block;
-        width: calc(100% - 1rem); 
-        margin: 0.3rem auto; 
-        padding: 0.8rem 1rem; 
-        font-size: 0.9rem; 
-        font-weight: bold;
-        color: var(--text-headings); 
-        background: var(--neumorphic-bg); 
-        border-radius: 50px; 
-        box-shadow: calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light), var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
-        transition: all var(--transition-speed) ease;
-        text-decoration: none;
+        padding: 0.25rem 0.5rem;
     }
-    .nav-order-button-item-mobile a#open-popup-btn-mobile:hover {
-        color: var(--text-link-hover); 
-        box-shadow: calc(var(--neumorphic-shadow-distance) * -1.2) calc(var(--neumorphic-shadow-distance) * -1.2) calc(var(--neumorphic-shadow-blur) * 1.2) var(--neumorphic-shadow-light), calc(var(--neumorphic-shadow-distance) * 1.2) calc(var(--neumorphic-shadow-distance) * 1.2) calc(var(--neumorphic-shadow-blur) * 1.2) var(--neumorphic-shadow-dark);
-    }
-    .nav-order-button-item-mobile a#open-popup-btn-mobile:active {
-        box-shadow: inset calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light), inset var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark); 
-        color: var(--text-secondary);
-    }
+    /* Commenting out old styles for .nav-order-button-item-mobile a#open-popup-btn-mobile */
+    /* This button will be redesigned as part of the general button redesign. */
+    /* For now, it will inherit some basic link/button styling if its classes are simple enough, or look unstyled. */
 
 
     h1 { font-size: 1.8rem; } 
@@ -832,7 +1356,14 @@ body.popup-open {
     /* Mobile Form Message Styling: Reverted to default block behavior */
 
     /* Footer Responsive */
-    .social-links a { width: 40px; height: 40px; font-size: 1.1rem; } 
-    .back-to-top { width: 35px; height: 35px; font-size: 1rem; bottom: 1rem; }
+.social-links a { width: 40px; height: 40px; font-size: 1.1rem; } /* Already styled above, this is for mobile */
+.back-to-top { width: 35px; height: 35px; font-size: 1rem; bottom: 1rem; } /* Already styled above */
     html[dir="rtl"] .back-to-top { right: 1rem; }
+}
+
+/* Ensure scroll-transformable elements can be moved without breaking layout */
+.scroll-transformable {
+    position: relative;
+    /* transition: transform 0.1s ease-out; /* Optional: smoothing for JS-driven transforms */
+    will-change: transform; /* Performance hint for elements being transformed by JS */
 }

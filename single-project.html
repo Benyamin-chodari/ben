@@ -45,62 +45,62 @@
     </header>
 
     <main class="page-content">
-        <section class="project-intro-section home-section">
+        <section class="project-intro-section home-section animate-on-scroll">
             <div class="container">
-                <div class="project-intro-grid">
-                    <div class="project-intro-details neumorphic neumorphic-outset">
-                        <h1 class="project-title" data-aos="fade-up" data-aos-delay="100">[عنوان پروژه نمونه اول]</h1>
-                        <p class="project-client-intro justified-text" data-aos="fade-up" data-aos-delay="150"><strong>مشتری:</strong> شرکت نمونه پیشرو در صنعت XYZ</p>
-                        <p class="project-description justified-text" data-aos="fade-up" data-aos-delay="200">
+                <div class="project-intro-grid animate-on-scroll-stagger-parent">
+                    <div class="project-intro-details card animate-stagger-item"> {/* Added card, animate-stagger-item, removed neumorphic */}
+                        <h1 class="project-title">[عنوان پروژه نمونه اول]</h1> {/* Removed data-aos */}
+                        <p class="project-client-intro justified-text"><strong>مشتری:</strong> شرکت نمونه پیشرو در صنعت XYZ</p> {/* Removed data-aos */}
+                        <p class="project-description justified-text">
                             توضیح مختصری در مورد این پروژه، اهداف اصلی آن و اینکه چگونه به مشتری کمک کرده است. این پروژه با تمرکز بر ارائه یک تجربه کاربری بی‌نظیر و طراحی مدرن و واکنش‌گرا پیاده‌سازی شده است. چالش اصلی در این پروژه [چالش اصلی] بود که با [راه‌حل شما] برطرف گردید.
-                        </p>
-                        <a href="[لینک به سایت پروژه در صورت وجود]" class="cta-button cta-button-small" target="_blank" rel="noopener noreferrer" style="margin-top: 1rem; margin-left: 0.5rem;" data-aos="fade-up" data-aos-delay="250">بازدید از سایت <i class="fas fa-external-link-alt"></i></a>
-                        <a href="#project-screenshot" class="cta-button cta-button-small" style="margin-top: 1rem;" data-aos="fade-up" data-aos-delay="300">نمایش اسکرین‌شات <i class="fas fa-arrow-down"></i></a>
+                        </p> {/* Removed data-aos */}
+                        <a href="[لینک به سایت پروژه در صورت وجود]" class="cta-button cta-button-small" target="_blank" rel="noopener noreferrer" style="margin-top: 1rem; margin-left: 0.5rem;">بازدید از سایت <i class="fas fa-external-link-alt"></i></a> {/* Removed data-aos */}
+                        <a href="#project-screenshot" class="cta-button cta-button-small" style="margin-top: 1rem;">نمایش اسکرین‌شات <i class="fas fa-arrow-down"></i></a> {/* Removed data-aos */}
                     </div>
-                    <div class="project-intro-image neumorphic neumorphic-inset">
+                    <div class="project-intro-image card animate-stagger-item"> {/* Added card, animate-stagger-item, removed neumorphic */}
                         <img src="assets/images/future-webdesign.jpg" alt="تصویر شاخص مربعی پروژه [نام پروژه]">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="project-screenshot-section home-section neumorphic neumorphic-outset" id="project-screenshot">
+        <section class="project-screenshot-section home-section card animate-on-scroll" id="project-screenshot"> {/* Added card, animate-on-scroll, removed neumorphic */}
             <div class="container">
                 <h2>نمای کامل صفحه اصلی وب‌سایت</h2>
                 <div class="screenshot-viewer">
-                    <div class="screenshot-frame neumorphic neumorphic-inset">
+                    <div class="screenshot-frame card"> {/* Added card, removed neumorphic */}
                         <img src="assets/portfolio-images/project-full.png" alt="اسکرین شات کامل صفحه اصلی پروژه" id="scrollable-image">
                     </div>
-                    <div class="custom-scrollbar-track neumorphic neumorphic-inset" id="scrollbar-track">
-                        <div class="custom-scrollbar-handle neumorphic neumorphic-outset" id="scrollbar-handle"></div>
+                    <div class="custom-scrollbar-track card" id="scrollbar-track"> {/* Added card, removed neumorphic */}
+                        <div class="custom-scrollbar-handle card" id="scrollbar-handle"></div> {/* Added card, removed neumorphic */}
                     </div>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.75rem;">(برای اسکرول تصویر، دستگیره کنار را بکشید)</p>
+                <p style="font-size: 0.8rem; color: var(--text-light); opacity:0.8; margin-top: 0.75rem;">(برای اسکرول تصویر، دستگیره کنار را بکشید)</p>
             </div>
         </section>
 
-        <section class="project-tech-section home-section">
+        <section class="project-tech-section home-section animate-on-scroll">
             <div class="container">
                 <h2>جزئیات فنی و امکانات پیاده‌سازی شده</h2>
-                <div class="project-tech-content neumorphic neumorphic-inset justified-text">
+                <div class="project-tech-content card justified-text"> {/* Added card, removed neumorphic */}
                     <p>در این پروژه از آخرین تکنولوژی‌های وب و با تمرکز بر سیستم مدیریت محتوای وردپرس استفاده شده است. برخی از موارد کلیدی عبارتند از:</p>
-                    <div class="project-tech-columns">
-                        <div>
-                            <h4><i class="fas fa-cogs" data-aos="zoom-in" data-aos-delay="50" data-aos-offset="50"></i> تکنولوژی‌های اصلی:</h4>
+                    <div class="project-tech-columns animate-on-scroll-stagger-parent">
+                        <div class="animate-stagger-item">
+                            <h4><i class="fas fa-cogs"></i> تکنولوژی‌های اصلی:</h4>
                             <ul>
-                                <li data-aos="fade-up" data-aos-delay="100" data-aos-offset="50"><i class="fab fa-wordpress"></i> وردپرس</li>
-                                <li data-aos="fade-up" data-aos-delay="150" data-aos-offset="50"><i class="fas fa-paint-brush"></i> قالب: [نام قالب یا طراحی اختصاصی]</li>
-                                <li data-aos="fade-up" data-aos-delay="200" data-aos-offset="50"><i class="fas fa-puzzle-piece"></i> پلاگین‌های کلیدی: [ووکامرس، ACF، المنتور و...]</li>
-                                <li data-aos="fade-up" data-aos-delay="250" data-aos-offset="50"><i class="fab fa-html5"></i> HTML5, <i class="fab fa-css3-alt"></i> CSS3, <i class="fab fa-js-square"></i> JavaScript</li>
+                                <li><i class="fab fa-wordpress"></i> وردپرس</li>
+                                <li><i class="fas fa-paint-brush"></i> قالب: [نام قالب یا طراحی اختصاصی]</li>
+                                <li><i class="fas fa-puzzle-piece"></i> پلاگین‌های کلیدی: [ووکامرس، ACF، المنتور و...]</li>
+                                <li><i class="fab fa-html5"></i> HTML5, <i class="fab fa-css3-alt"></i> CSS3, <i class="fab fa-js-square"></i> JavaScript</li>
                             </ul>
                         </div>
-                        <div>
-                            <h4><i class="fas fa-star" data-aos="zoom-in" data-aos-delay="50" data-aos-offset="50"></i> امکانات و ویژگی‌های برجسته:</h4>
+                        <div class="animate-stagger-item">
+                            <h4><i class="fas fa-star"></i> امکانات و ویژگی‌های برجسته:</h4>
                             <ul>
-                                <li data-aos="fade-up" data-aos-delay="100" data-aos-offset="50"><i class="fas fa-check-circle"></i> [ویژگی خاص اول، مثلا: سیستم رزرو پیشرفته]</li>
-                                <li data-aos="fade-up" data-aos-delay="150" data-aos-offset="50"><i class="fas fa-check-circle"></i> [ویژگی خاص دوم، مثلا: طراحی کاملا واکنش‌گرا]</li>
-                                <li data-aos="fade-up" data-aos-delay="200" data-aos-offset="50"><i class="fas fa-check-circle"></i> [ویژگی خاص سوم، مثلا: بهینه‌سازی سرعت لود]</li>
-                                <li data-aos="fade-up" data-aos-delay="250" data-aos-offset="50"><i class="fas fa-check-circle"></i> [ویژگی خاص چهارم، مثلا: پنل مدیریت سفارشی]</li>
+                                <li><i class="fas fa-check-circle"></i> [ویژگی خاص اول، مثلا: سیستم رزرو پیشرفته]</li>
+                                <li><i class="fas fa-check-circle"></i> [ویژگی خاص دوم، مثلا: طراحی کاملا واکنش‌گرا]</li>
+                                <li><i class="fas fa-check-circle"></i> [ویژگی خاص سوم، مثلا: بهینه‌سازی سرعت لود]</li>
+                                <li><i class="fas fa-check-circle"></i> [ویژگی خاص چهارم، مثلا: پنل مدیریت سفارشی]</li>
                             </ul>
                         </div>
                     </div>
@@ -109,11 +109,11 @@
             </div>
         </section>
 
-        <section class="other-projects-slider-section home-section neumorphic neumorphic-outset">
+        <section class="other-projects-slider-section home-section card animate-on-scroll animate-on-scroll-stagger-parent"> {/* Added card, animate classes, removed neumorphic */}
             <div class="container">
                 <h2>سایر نمونه کارها</h2>
                 <div class="other-projects-slider">
-                    <article class="other-project-card neumorphic interactive-card" data-aos="fade-up" data-aos-delay="100" data-aos-offset="50">
+                    <article class="other-project-card card interactive-card animate-stagger-item"> {/* Added card, animate-stagger-item, removed neumorphic */}
                         <a href="single-project.html" class="other-project-card-link">
                             <div class="other-project-card-image-wrapper">
                                 <img src="assets/images/project-2.png" alt="پروژه دوم">
@@ -124,7 +124,7 @@
                             </div>
                         </a>
                     </article>
-                    <article class="other-project-card neumorphic interactive-card" data-aos="fade-up" data-aos-delay="150" data-aos-offset="50">
+                    <article class="other-project-card card interactive-card animate-stagger-item">
                         <a href="single-project.html" class="other-project-card-link">
                             <div class="other-project-card-image-wrapper">
                                 <img src="assets/images/project-3.png" alt="پروژه سوم">
@@ -135,7 +135,7 @@
                             </div>
                         </a>
                     </article>
-                    <article class="other-project-card neumorphic interactive-card" data-aos="fade-up" data-aos-delay="200" data-aos-offset="50">
+                    <article class="other-project-card card interactive-card animate-stagger-item">
                         <a href="single-project.html" class="other-project-card-link">
                             <div class="other-project-card-image-wrapper">
                                 <img src="assets/images/project-4.png" alt="پروژه چهارم">
@@ -146,7 +146,7 @@
                             </div>
                         </a>
                     </article>
-                    <article class="other-project-card neumorphic interactive-card" data-aos="fade-up" data-aos-delay="250" data-aos-offset="50">
+                    <article class="other-project-card card interactive-card animate-stagger-item">
                         <a href="single-project.html" class="other-project-card-link">
                             <div class="other-project-card-image-wrapper">
                                 <img src="assets/images/project-5.png" alt="پروژه پنجم">
@@ -161,7 +161,7 @@
             </div>
         </section>
 
-        <section class="home-section cta-section-page">
+        <section class="home-section cta-section-page card animate-on-scroll"> {/* Added card, animate-on-scroll */}
             <div class="container">
                 <h2>آیا این پروژه برای شما الهام‌بخش بود؟</h2>
                 <p class="justified-text">اگر این نمونه کار مورد توجه شما قرار گرفته و یا ایده‌ای مشابه یا متفاوت در ذهن دارید، باعث افتخار من است که در مورد آن با شما گفتگو کنم و به تحقق رویای دیجیتالی شما کمک کنم.</p>
@@ -174,14 +174,14 @@
         <div class="container">
             <div class="footer-content">
                 <div class="social-links">
-                    <a href="https://www.instagram.com/benyamins.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام" class="neumorphic neumorphic-flat social-icon-instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://t.me/benyaminscom" target="_blank" rel="noopener noreferrer" aria-label="تلگرام" class="neumorphic neumorphic-flat social-icon-telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="https://wa.me/+989991785354" target="_blank" rel="noopener noreferrer" aria-label="واتس‌اپ" class="neumorphic neumorphic-flat social-icon-whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.linkedin.com/in/benjamin-chodari/" target="_blank" rel="noopener noreferrer" aria-label="لینکدین" class="neumorphic neumorphic-flat social-icon-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/benyamins.ir/" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام" class="social-icon-instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/benyaminscom" target="_blank" rel="noopener noreferrer" aria-label="تلگرام" class="social-icon-telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://wa.me/+989991785354" target="_blank" rel="noopener noreferrer" aria-label="واتس‌اپ" class="social-icon-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/benjamin-chodari/" target="_blank" rel="noopener noreferrer" aria-label="لینکدین" class="social-icon-linkedin"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <p class="copyright-text">&copy; <span id="current-year"></span> تمام حقوق برای بنیامین چودری محفوظ است.</p>
             </div>
-            <a href="#top" class="back-to-top neumorphic neumorphic-flat" aria-label="بازگشت به بالا">
+            <a href="#top" class="back-to-top" aria-label="بازگشت به بالا"> {/* Removed neumorphic classes */}
                 <i class="fas fa-arrow-up"></i>
             </a>
         </div>
@@ -192,23 +192,25 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
     <div class="popup-overlay" id="order-popup-overlay" style="display: none;" aria-hidden="true" role="dialog" aria-labelledby="popup-title">
-        <div class="popup-dialog neumorphic neumorphic-outset" id="order-popup-dialog" role="document">
-            <button class="popup-close-btn neumorphic neumorphic-flat" id="close-popup-btn" aria-label="بستن">&times;</button>
+        <div class="popup-dialog card" id="order-popup-dialog" role="document"> {/* Replaced neumorphic with card */}
+            <button class="popup-close-btn" id="close-popup-btn" aria-label="بستن">&times;</button> {/* Removed neumorphic, will need new button styling if not covered by generic close icon style */}
             <h3 id="popup-title" style="font-size: 1.2rem; margin-bottom: 0.5rem;">سفارش طراحی سایت</h3>
-            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+            <p style="font-size: 0.9rem; color: var(--text-light); opacity: 0.8; margin-bottom: 1.5rem; line-height: 1.6;"> {/* Updated text color */}
                 لطفاً نام و شماره تلفن خود را وارد کنید تا در اسرع وقت با شما تماس بگیرم.
             </p>
-            <form id="popup-contact-form" action="https://formspree.io/f/mjkrbgpz" method="POST"> <div class="form-group neumorphic neumorphic-inset">
+            <form id="popup-contact-form" action="https://formspree.io/f/mjkrbgpz" method="POST">
+                <div class="form-group"> {/* Removed neumorphic */}
                     <input type="text" id="popup-name" name="name" placeholder="نام شما *" required>
                     <label for="popup-name" class="form-label-placeholder">نام شما *</label>
                 </div>
-                <div class="form-group neumorphic neumorphic-inset">
+                <div class="form-group"> {/* Removed neumorphic */}
                     <input type="tel" id="popup-phone" name="phone" placeholder="شماره تماس *" required>
                     <label for="popup-phone" class="form-label-placeholder">شماره تماس *</label>
                 </div>
-                <button type="submit" class="cta-button popup-submit-button neumorphic neumorphic-outset">ارسال درخواست</button>
+                <button type="submit" class="cta-button popup-submit-button">ارسال درخواست</button> {/* Removed neumorphic */}
             </form>
-            <div id="popup-form-messages" style="margin-top: 1rem; text-align: center; min-height: 2em;"></div> <p class="popup-contact-link" style="margin-top: 1.5rem; font-size: 0.85rem; border-top: 1px solid var(--neumorphic-shadow-dark); padding-top: 1rem;">
+            <div id="popup-form-messages" style="margin-top: 1rem; text-align: center; min-height: 2em;"></div>
+             <p class="popup-contact-link" style="margin-top: 1.5rem; font-size: 0.85rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;"> {/* Adjusted border color */}
                 همچنین می‌توانید از طریق <a href="contact.html" style="text-decoration: underline;">صفحه تماس با من</a> یا سایر راه‌های ارتباطی اقدام کنید.
             </p>
         </div>

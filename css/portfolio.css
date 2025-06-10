@@ -2,28 +2,27 @@
 /* Portfolio Page Specific Styles */
 /* ============== */
 
-/* General .page-content and .page-title-section are styled in style.css (global) */
-
-/* Portfolio Page - Page Title Section */
-.page-title-section.neumorphic-inset { /* Applied to the section in HTML */
+/* .page-title-section is now a .card, styled globally in style.css */
+/*
+.page-title-section.neumorphic-inset {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1.5rem; /* فاصله از هدر */
-    /* margin-bottom is 2.5rem from global style.css, which is fine here */
-    padding: 2rem 15px; /* حفظ پدینگ عمودی، اضافه کردن پدینگ افقی */
+    margin-top: 1.5rem;
+    padding: 2rem 15px;
     box-sizing: border-box;
 }
+*/
 
 .portfolio-page-section {
     /* padding from .home-section in style.css applies if .home-section class is used on the section */
 }
 
-.portfolio-page-section .section-subtitle { /* For intro paragraph on portfolio page */
+.portfolio-page-section .section-subtitle {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    color: var(--text-secondary);
+    /* color: var(--text-secondary); // Inherits from global .section-subtitle */
 }
 
 .portfolio-grid {
@@ -32,58 +31,56 @@
     grid-template-columns: 1fr;
 }
 
-/* Tablet - 2 columns */
 @media (min-width: 768px) { 
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-.portfolio-card {
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    border-radius: var(--border-radius); /* This radius is for the overall card */
-    overflow: hidden; 
-    display: flex;
-    flex-direction: column;
-}
+/* .portfolio-card is now a .card, styled globally. Specifics for content below. */
+/* Old .portfolio-card hover effect commented out as global .card:hover applies */
+/*
 .portfolio-card:hover { 
     transform: translateY(-5px);
     box-shadow:
         calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-blur) * 1.1) var(--neumorphic-shadow-light),
         calc(var(--neumorphic-shadow-distance) * 1) calc(var(--neumorphic-shadow-distance) * 1) calc(var(--neumorphic-shadow-blur) * 1.1) var(--neumorphic-shadow-dark);
 }
-
+*/
 
 .portfolio-card-link { 
     display: flex;
     flex-direction: column;
     height: 100%; 
     text-decoration: none;
-    color: inherit; 
+    color: inherit; /* Links inside cards should inherit card text color by default */
 }
+body.dark-mode .portfolio-card-link { color: var(--text-dark); }
+body.light-mode .portfolio-card-link { color: var(--text-light); }
+
 
 .portfolio-card-image-wrapper {
     width: 100%;
     aspect-ratio: 16 / 10; 
-    background-color: var(--neumorphic-shadow-dark); 
+    background-color: rgba(0,0,0,0.05); /* Placeholder background for images */
     overflow: hidden;
-    /* MODIFIED: Specific border-radius for top corners only */
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
-    border-bottom-left-radius: 0; /* Sharp bottom corners */
-    border-bottom-right-radius: 0; /* Sharp bottom corners */
+    border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0; /* Rounded top corners */
 }
+body.dark-mode .portfolio-card-image-wrapper {
+    background-color: rgba(255,255,255,0.05);
+}
+
 
 .portfolio-card-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
-    border-radius: 0; /* MODIFIED: Ensure image itself has no border-radius */
+    transition: transform var(--transition-speed-normal) ease; /* Use new var */
+    border-radius: 0;
 }
 
-.portfolio-card:hover .portfolio-card-image-wrapper img {
+.portfolio-card:hover .portfolio-card-image-wrapper img { /* Keep this hover effect */
     transform: scale(1.05); 
 }
 
@@ -93,27 +90,31 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    background-color: var(--neumorphic-bg); 
-    /* border-top: 1px solid var(--neumorphic-shadow-dark); /* This can be removed if image wrapper is directly above */
+    /* background-color: var(--neumorphic-bg); // Handled by global .card */
 }
 
 .portfolio-card-title {
     font-size: 1.3rem;
-    color: var(--text-headings);
+    color: var(--text-light); /* Use new var */
     margin-bottom: 0.25rem;
 }
+body.dark-mode .portfolio-card-title { color: var(--text-dark); }
+
 
 .portfolio-card-category {
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    color: var(--text-light); /* Use new var */
+    opacity: 0.7;
     margin-bottom: 0.75rem;
     font-weight: normal;
 }
+body.dark-mode .portfolio-card-category { color: var(--text-dark); opacity: 0.7;}
+
 
 .portfolio-card-description {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
+    font-size: 0.95rem; /* Match global p */
+    /* color: var(--text-secondary); // Inherit from parent .card -> body */
+    line-height: 1.7; /* Match global p */
     flex-grow: 1; 
     margin-bottom: 0;
 }
@@ -122,23 +123,32 @@
     margin-top: 1rem;
     text-align: right;
 }
-.portfolio-card-tech span {
+.portfolio-card-tech span { /* Styling for tech tags */
     display: inline-block;
-    background-color: var(--neumorphic-bg); 
-    color: var(--text-secondary);
+    background-color: rgba(0,0,0,0.05);
+    color: var(--text-light);
+    opacity: 0.8;
     padding: 0.3rem 0.7rem;
     font-size: 0.75rem;
     border-radius: 6px; 
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
-    box-shadow: inset 1px 1px 2px var(--neumorphic-shadow-dark), inset -1px -1px 2px var(--neumorphic-shadow-light);
+    /* box-shadow: inset 1px 1px 2px var(--neumorphic-shadow-dark), inset -1px -1px 2px var(--neumorphic-shadow-light); // Remove neumorphic shadow */
+    border: 1px solid rgba(0,0,0,0.08);
 }
+body.dark-mode .portfolio-card-tech span {
+    background-color: rgba(255,255,255,0.08);
+    color: var(--text-dark);
+    opacity: 0.8;
+    border-color: rgba(255,255,255,0.1);
+}
+
 
 /* CTA Section at the end of portfolio page uses .cta-section-page from global style.css */
 
 @media (max-width: 767px) {
     /* Responsive adjustments for framed sections on Portfolio Page */
-    .page-title-section.neumorphic-inset { 
+    .page-title-section { /* Now a card */
         padding: 1.5rem 15px;
         margin-top: 1rem; 
         margin-bottom: 2rem; 
@@ -155,13 +165,10 @@
         font-size: 1.15rem;
     }
     .portfolio-card-description {
-        font-size: 0.85rem;
+        font-size: 0.9rem; /* Adjusted to be slightly smaller than base p for mobile cards */
     }
     .portfolio-card-image-wrapper {
         aspect-ratio: 3 / 2; 
-        /* border-radius for mobile can remain as is (top rounded, bottom sharp) or be uniform if desired */
-        /* If uniform rounded corners needed for image wrapper on mobile:
-        border-radius: var(--border-radius); 
-        */
+        border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0; /* Keep top rounded */
     }
 }

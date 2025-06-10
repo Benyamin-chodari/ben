@@ -2,23 +2,24 @@
 /* Contact Page Specific Styles - Simplified & Corrected */
 /* ============== */
 
-/* Contact Page - Page Title Section */
-.page-title-section.neumorphic-inset { /* Applied to the section in HTML */
+/* .page-title-section is now a .card, styled globally */
+/*
+.page-title-section.neumorphic-inset {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1.5rem; /* فاصله از هدر */
-    /* global style.css provides padding: 2rem 0 and margin-bottom: 2.5rem */
-    padding-left: 15px; /* Adding horizontal padding */
-    padding-right: 15px; /* Adding horizontal padding */
+    margin-top: 1.5rem;
+    padding-left: 15px;
+    padding-right: 15px;
     box-sizing: border-box;
 }
+*/
 
 .contact-page-section .section-subtitle {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    color: var(--text-primary);
+    /* color: var(--text-primary); // Inherits from global .section-subtitle */
 }
 
 .contact-page-wrapper {
@@ -35,29 +36,35 @@
     min-width: 300px; 
 }
 
+/* .contact-info-block and .contact-form-wrapper are now .card, styled globally */
 .contact-info-block, 
 .contact-form-wrapper { 
-    padding: 2rem;
-    border-radius: var(--border-radius);
+    /* padding: 2rem; // From global .card, or can be overridden if needed */
     height: 100%; 
     box-sizing: border-box; 
 }
 
 .contact-info-block h3,
 .contact-form-wrapper h3 {
-    font-size: 1.5rem;
-    color: var(--text-headings);
+    font-size: 1.5rem; /* Matches global h3 */
+    color: var(--text-light); /* Use new var */
     margin-bottom: 1.5rem;
     text-align: right;
     display: flex;
     align-items: center;
 }
+body.dark-mode .contact-info-block h3,
+body.dark-mode .contact-form-wrapper h3 { color: var(--text-dark); }
+
 .contact-info-block h3 i,
 .contact-form-wrapper h3 i {
     margin-left: 0.75rem;
     font-size: 1.1em;
-    color: var(--text-primary); 
+    color: var(--text-light); /* Use new var */
 }
+body.dark-mode .contact-info-block h3 i,
+body.dark-mode .contact-form-wrapper h3 i { color: var(--text-dark); }
+
 
 /* Revised Contact Info List */
 .contact-info-list-revised {
@@ -68,21 +75,23 @@
 .contact-info-list-revised li {
     margin-bottom: 1rem;
 }
+/* .contact-item-link is now a .card, styled globally */
 .contact-item-link {
     display: flex;
     align-items: center;
-    padding: 1rem;
+    /* padding: 1rem; // From global .card */
     text-decoration: none;
-    border-radius: var(--border-radius);
-    transition: all var(--transition-speed) ease;
+    /* border-radius: var(--border-radius-medium); // From global .card */
+    transition: all var(--transition-speed-fast) ease; /* Use new var */
 }
+
 .contact-item-icon {
     font-size: 1.5rem;
-    color: var(--text-headings); 
+    color: var(--primary-accent); /* Use accent for icons */
     margin-left: 1rem;
     width: 30px;
     text-align: center;
-    transition: color var(--transition-speed) ease;
+    transition: color var(--transition-speed-fast) ease;
 }
 .contact-item-text {
     display: flex;
@@ -91,50 +100,59 @@
 }
 .contact-item-text strong {
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: var(--text-light); /* Use new var */
+    opacity: 0.8;
     margin-bottom: 0.25rem;
 }
+body.dark-mode .contact-item-text strong { color: var(--text-dark); opacity: 0.8;}
+
 .contact-item-text span {
     font-size: 1rem;
-    color: var(--text-primary); 
+    color: var(--text-light);
     font-weight: normal;
     word-break: break-all;
-    transition: color var(--transition-speed) ease;
+    transition: color var(--transition-speed-fast) ease;
     direction: ltr; 
     unicode-bidi: embed; 
     display: inline-block; 
 }
+body.dark-mode .contact-item-text span { color: var(--text-dark); }
 
-/* Hover effects for contact item links */
-.contact-item-link:hover .contact-item-text span,
-.contact-item-link:hover .contact-item-text strong {
-    color: var(--text-link-hover); 
-}
-/* Specific icon hover colors for contact methods */
-.contact-item-link:hover .fa-whatsapp { color: var(--social-whatsapp); }
-.contact-item-link:hover .fa-envelope-open-text { color: var(--social-telegram); } /* MODIFIED: Changed to Telegram Blue for Email */
-.contact-item-link:hover .fa-phone-volume { color: var(--social-instagram); } /* MODIFIED: Changed to Instagram Red for Phone */
+
+/* Hover effects for contact item links (now cards) - rely on global .card:hover */
+/* Specific icon color changes on hover can remain */
+.contact-item-link:hover .contact-item-icon.fa-whatsapp { color: var(--social-whatsapp); }
+.contact-item-link:hover .contact-item-icon.fa-envelope-open-text { color: var(--social-telegram); }
+.contact-item-link:hover .contact-item-icon.fa-phone-volume { color: var(--social-instagram); }
 
 
 /* Social Links on Contact Page */
-.social-links-contact-page {
+.social-links-contact-page { /* These are not cards, but individual icon links */
     text-align: right;
     margin-top: 1.5rem;
 }
 
-.social-links-contact-page a {
+.social-links-contact-page a { /* Individual social icons */
     display: inline-flex;   
     align-items: center;    
     justify-content: center; 
-    width: 50px;            
-    height: 50px;           
+    width: 45px; /* Slightly smaller than footer ones */
+    height: 45px;
     border-radius: 50%;     
-    margin: 0 0 0 0.8rem;   
-    font-size: 1.5rem;      
-    color: var(--text-secondary);
-    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    margin: 0 0 0 0.7rem;   /* Adjusted margin for RTL */
+    font-size: 1.3rem;
+    color: var(--text-light);
+    opacity: 0.7;
+    background-color: var(--card-bg-light); /* Give them a card-like bg */
+    box-shadow: var(--card-shadow);
+    transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease, background-color var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease;
     text-decoration: none; 
 }
+body.dark-mode .social-links-contact-page a {
+    color: var(--text-dark);
+    background-color: var(--card-bg-dark);
+}
+
 
 .social-links-contact-page a:last-child {
     margin-left: 0;
@@ -142,22 +160,30 @@
 
 .social-links-contact-page a:hover {
     transform: translateY(-2px);
+    opacity: 1;
 }
 
-/* Brand color change on hover for the icon itself */
-.social-links-contact-page a.social-icon-instagram:hover i { color: var(--social-instagram); }
-.social-links-contact-page a.social-icon-telegram:hover i { color: var(--social-telegram); }
-.social-links-contact-page a.social-icon-whatsapp:hover i { color: var(--social-whatsapp); }
-.social-links-contact-page a.social-icon-linkedin:hover i { color: var(--social-linkedin); }
+.social-links-contact-page a.social-icon-instagram:hover { color: var(--social-instagram); background-color: var(--bg-light); }
+.social-links-contact-page a.social-icon-telegram:hover { color: var(--social-telegram); background-color: var(--bg-light); }
+.social-links-contact-page a.social-icon-whatsapp:hover { color: var(--social-whatsapp); background-color: var(--bg-light); }
+.social-links-contact-page a.social-icon-linkedin:hover { color: var(--social-linkedin); background-color: var(--bg-light); }
+
+body.dark-mode .social-links-contact-page a.social-icon-instagram:hover { background-color: var(--bg-dark); }
+body.dark-mode .social-links-contact-page a.social-icon-telegram:hover { background-color: var(--bg-dark); }
+body.dark-mode .social-links-contact-page a.social-icon-whatsapp:hover { background-color: var(--bg-dark); }
+body.dark-mode .social-links-contact-page a.social-icon-linkedin:hover { background-color: var(--bg-dark); }
+
 
 .social-links-contact-page a i {
     line-height: 1; 
 }
 
-/* Contact Form Styles */
+/* Contact Form Styles - .form-group and inputs are styled globally */
 .contact-page-form .form-group {
     /* Inherits global .form-group styles */
 }
+/* Input field padding and font size are global */
+/*
 .contact-page-form .form-group input[type="text"],
 .contact-page-form .form-group input[type="email"],
 .contact-page-form .form-group input[type="tel"],
@@ -166,7 +192,10 @@
     font-size: 1rem;
     line-height: 1.5;
 }
+*/
 
+/* .contact-page-form .form-submit-button uses global .cta-button style */
+/*
 .contact-page-form .form-submit-button {
     font-family: var(--font-primary);
     font-weight: bold;
@@ -180,11 +209,12 @@
         calc(var(--neumorphic-shadow-distance) * -0.6) calc(var(--neumorphic-shadow-distance) * -0.6) calc(var(--neumorphic-shadow-blur) * 0.8) var(--neumorphic-shadow-light),
         calc(var(--neumorphic-shadow-distance) * 0.6) calc(var(--neumorphic-shadow-distance) * 0.6) calc(var(--neumorphic-shadow-blur) * 0.8) var(--neumorphic-shadow-dark);
 }
+*/
 
 
 /* Responsive Adjustments for Contact Page */
 @media (max-width: 767px) {
-    .page-title-section.neumorphic-inset { 
+    .page-title-section {
         padding: 1.5rem 15px;
         margin-top: 1rem;
         margin-bottom: 2rem;
@@ -211,7 +241,7 @@
         text-align: center;
     }
     .social-links-contact-page a {
-        margin: 0 0.5rem;
+        margin: 0 0.5rem; /* Center alignment will handle spacing */
         font-size: 1.4rem;
     }
 }

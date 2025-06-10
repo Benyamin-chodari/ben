@@ -538,4 +538,80 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     console.log("وب سایت پورتفولیو با فونت IRANYekanX و پایه واکنش‌گرا آماده است!");
+
+    // Scroll Animations Logic
+    // 1. Animate sections on scroll
+    const animatedSections = document.querySelectorAll('.animate-on-scroll');
+    if (animatedSections.length > 0) {
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+
+                    // Check if this section is also a stagger parent
+                    if (entry.target.classList.contains('animate-on-scroll-stagger-parent')) {
+                        const staggerItems = entry.target.querySelectorAll('.animate-stagger-item');
+                        staggerItems.forEach((item, index) => {
+                            item.style.animationDelay = `${index * 0.15}s`;
+                            item.classList.add('is-visible');
+                        });
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animatedSections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    }
+
+    // 2. Parallax Background & Scroll-based Element Movement
+    const parallaxBgs = document.querySelectorAll('.parallax-bg');
+    const scrollMoveElements = document.querySelectorAll('.scroll-move');
+    let ticking = false;
+
+    function handleScrollEffects() {
+        if (parallaxBgs.length > 0) {
+            parallaxBgs.forEach(el => {
+                // Only update if element is somewhat in view (basic optimization)
+                const rect = el.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    const speed = parseFloat(el.dataset.parallaxSpeed) || 0.5;
+                    el.style.backgroundPositionY = (window.scrollY * speed) + 'px';
+                }
+            });
+        }
+
+        if (scrollMoveElements.length > 0) {
+            scrollMoveElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    const speed = parseFloat(el.dataset.scrollSpeed) || 0.1;
+                    // Example: move up as user scrolls down. Adjust as needed.
+                    // This simple version doesn't use initialPosition, but moves relative to current flow.
+                    // For more complex effects (e.g. moving from an offset to natural position),
+                    // initial position calculation before scroll would be needed.
+                    const moveY = -(window.scrollY * speed);
+                    el.style.transform = `translateY(${moveY}px)`;
+                }
+            });
+        }
+        ticking = false;
+    }
+
+    if (parallaxBgs.length > 0 || scrollMoveElements.length > 0) {
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(handleScrollEffects);
+                ticking = true;
+            }
+        }, { passive: true });
+        // Initial call to set positions if elements are already in view without scrolling
+        if (!ticking) {
+            window.requestAnimationFrame(handleScrollEffects);
+            ticking = true;
+        }
+    }
+
 });

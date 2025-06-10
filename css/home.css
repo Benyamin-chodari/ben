@@ -3,6 +3,8 @@
 /* ============== */
 
 /* Static Banner (Home Page) */
+/* Neumorphic styles commented out, base parallax styling is in style.css */
+/*
 .static-banner-section.neumorphic-inset {
     max-width: 1200px; 
     margin-left: auto;
@@ -15,6 +17,22 @@
 .static-banner-section.neumorphic-inset .static-banner-image-container {
     max-width: 100%; 
 }
+*/
+.static-banner-section { /* Keep if any specific layout for home banner is needed */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 15px;
+    margin-top: 1.5rem;
+    box-sizing: border-box;
+    background-color: transparent; /* Ensure no old bg color if it was here */
+}
+.static-banner-section .static-banner-image-container {
+    max-width: 100%;
+    border-radius: var(--border-radius-medium); /* Apply new border radius */
+    overflow: hidden; /* Keep overflow hidden */
+}
+
 
 /* Hero Section (Home Page) */
 .hero-section {
@@ -26,13 +44,15 @@
     padding: 3rem 0; 
 }
 .hero-content h1 {
-    font-size: 2.5rem; 
-    color: var(--text-headings);
+    font-size: 2.75rem; /* Matched to global h1 */
+    color: var(--text-light); /* Use new variable */
     margin-bottom: 0.5em;
 }
+/* Dark mode for h1 is handled by global style in style.css */
 .hero-content .subtitle {
-    font-size: 1.25rem; 
-    color: var(--text-secondary);
+    font-size: 1.15rem; /* Adjusted to be slightly larger than base p */
+    color: var(--text-light);
+    opacity: 0.8;
     margin-bottom: 1.5em;
     max-width: 600px;
     margin-left: auto;
@@ -40,6 +60,8 @@
 }
 
 /* About Me Section (Home Page Snippet) */
+/* .about-me-section is now a .card, styled globally */
+/*
 .about-me-section.neumorphic-outset { 
     max-width: 1200px; 
     margin-left: auto;
@@ -47,9 +69,9 @@
     padding-left: 15px; 
     padding-right: 15px; 
     box-sizing: border-box;
-    /* padding-top & padding-bottom from .home-section in style.css */
 }
-.about-me-content { 
+*/
+.about-me-content { /* Kept for layout */
     display: flex;
     align-items: center;
     gap: 2.5rem;
@@ -57,6 +79,8 @@
     max-width: 1000px;
     margin: 0 auto;
 }
+/* .about-me-image is now a .card, styled globally */
+/*
 .about-me-image { 
     flex-basis: 300px;
     flex-shrink: 0;
@@ -67,162 +91,103 @@
     align-items: center;
     justify-content: center;
 }
+*/
 .about-me-image img {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
-    border-radius: calc(var(--border-radius) - 4px);
+    border-radius: var(--border-radius-medium); /* Use new var */
 }
 .about-me-text { 
     flex-grow: 1;
 }
 .about-me-text h3 { 
-    color: var(--text-headings);
     font-size: 1.75rem;
     margin-bottom: 1rem;
+    color: var(--text-light); /* Use new var */
+}
+body.dark-mode .about-me-text h3 {
+    color: var(--text-dark);
 }
 .about-me-text p {
-    font-size: 1rem; 
-    line-height: 1.8;
-    color: var(--text-secondary);
     text-align: justify;
+    /* Inherits global p styles for font-size, line-height, color */
 }
-.about-me-text .inline-link {
-    padding: 0.2em 0.5em;
-    font-weight: bold;
-    color: var(--text-primary); 
-}
+
 
 /* Featured Projects Section (Home Page - Uses .card-grid and .card) */
 #featured-projects { 
-    /* General .home-section styles apply */
+    /* General .home-section styles apply from style.css */
 }
-.card-grid { 
+.card-grid { /* This class is used for featured projects and portfolio page */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ensure this is suitable */
+    gap: 2rem; /* Consistent gap */
 }
-.card { 
-    padding: 1.5rem;
-    text-align: right;
+/* Individual .card styling (including .portfolio-card-link-home children) is now global */
+.portfolio-card-link-home .portfolio-card-category {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    color: var(--text-light); /* Use new var */
 }
-.card img {
-    margin: 0 auto 1rem auto;
-    border-radius: var(--border-radius); 
+body.dark-mode .portfolio-card-link-home .portfolio-card-category {
+    color: var(--text-dark);
 }
-.card h3 { 
-    color: var(--text-headings); 
-    margin-bottom: 0.5em;
-    font-size: 1.3rem;
-}
-.card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
+
 
 /* Services Section (Home Page Snippet) */
 .services-section-home { 
-    /* General .home-section styles apply */
+    /* General .home-section styles apply from style.css */
 }
 .services-grid { 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 2.5rem;
 }
-.service-card { 
-    padding: 2rem 1.5rem;
-    text-align: center;
-    border-radius: var(--border-radius);
-    box-shadow:
-        calc(var(--neumorphic-shadow-distance) * -0.3) calc(var(--neumorphic-shadow-distance) * -0.3) calc(var(--neumorphic-shadow-blur) * 0.3) var(--neumorphic-shadow-light),
-        calc(var(--neumorphic-shadow-distance) * 0.3) calc(var(--neumorphic-shadow-distance) * 0.3) calc(var(--neumorphic-shadow-blur) * 0.3) var(--neumorphic-shadow-dark);
-    transition: all var(--transition-speed) ease-in-out;
-    display: flex;
-    flex-direction: column;
-}
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow:
-        calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-light),
-        var(--neumorphic-shadow-distance) var(--neumorphic-shadow-distance) var(--neumorphic-shadow-blur) var(--neumorphic-shadow-dark);
-}
+/* .service-card is styled globally as .card */
 .service-card-icon { 
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    margin: 0 auto 1.5rem auto;
+    margin: 0 auto 1rem auto;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px; 
     flex-shrink: 0;
-    background-color: transparent; 
+    background: var(--bg-light);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-.service-card-icon i { 
-    font-size: 1.8rem;
-    color: var(--text-headings); 
+body.dark-mode .service-card-icon {
+    background: var(--bg-dark);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
-.service-card-title { 
-    font-size: 1.25rem;
-    color: var(--text-headings); 
-    margin-bottom: 0.5rem;
-}
-.service-card-description {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-}
-.service-features { 
-    list-style: none;
-    padding: 0;
-    margin: 0 auto 1rem auto;
-    width: fit-content;
-    min-width: 180px; 
-}
-.service-features li {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-}
-.service-features li i { 
-    color: var(--text-headings); 
-    margin-left: 0.65rem; 
-    font-size: 0.8rem;
-    flex-shrink: 0;
-}
+/* Other .service-card children (icon i, title, description, features) styled globally or via global text styles */
+
 
 /* CTA & Contact Form Section (Home Page) */
-.cta-contact-section.neumorphic-outset { /* MODIFIED: class changed from neumorphic-inset */
-    padding: 3rem 15px 2rem 15px; 
-    max-width: 1200px; 
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    margin-bottom: 3rem; /* MODIFIED: Increased for more space from footer */
-}
+/* .cta-contact-section is styled globally as .card */
 .cta-contact-section h2 {
     margin-bottom: 0.75rem;
-    color: var(--text-headings); 
+    /* color is global */
 }
 .cta-contact-section .cta-subtitle {
-    color: var(--text-secondary);
     font-size: 1.1rem;
     margin-bottom: 2.5rem;
     max-width: 650px;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0.8; /* Match global section-subtitle */
+    /* color is global */
 }
 .contact-form-home { 
     max-width: 700px;
-    margin: 0 auto; /* Removed bottom margin from here, section handles it */
+    margin: 0 auto;
     text-align: right;
     overflow: hidden; 
 }
+/* Form elements (.form-group, inputs, labels, .form-submit-button) styled globally in style.css */
+/*
 .form-submit-button { 
     font-family: var(--font-primary);
     font-weight: bold;
@@ -232,5 +197,6 @@
     margin-top: 1rem;
     float: left; 
 }
+*/
 
 /* No mobile-specific media query block needed in home.css if global styles + existing padding handles it */

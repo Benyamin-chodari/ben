@@ -6,39 +6,38 @@
 /* Static Banner is also styled globally in style.css */
 
 /* Services Page - Static Banner Section */
-.static-banner-section.neumorphic-inset { /* Targeting the one on services page */
+/* This section is now a .card, global styles apply. These are for layout. */
+.static-banner-section {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1.5rem; /* فاصله از هدر */
-    /* Global style.css has padding: 10px; we'll make horizontal padding consistent */
-    padding: 10px 15px; /* 10px vertical, 15px horizontal */
+    margin-top: 1.5rem;
+    padding: 10px 15px;
     box-sizing: border-box;
-    /* margin-bottom is 2rem from global style.css */
+    background-color: transparent; /* Ensure no old bg if it was here, card style will take over */
 }
 
 /* Services Page - Page Title Section */
-.page-title-section.neumorphic-inset { /* Targeting the one on services page */
+/* This section is now a .card, global styles apply. These are for layout. */
+.page-title-section {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    /* margin-top and margin-bottom are handled by inline styles in services.html */
-    /* Global style.css has padding: 2rem 0; we'll add horizontal padding */
-    padding: 2rem 15px; /* 2rem vertical, 15px horizontal */
+    padding: 2rem 15px;
     box-sizing: border-box;
 }
 
 .services-page-intro {
-    padding-top: 0; /* If it follows static banner & page-title closely */
-    padding-bottom: 1.5rem; /* Space before services grid */
+    padding-top: 0;
+    padding-bottom: 1.5rem;
     text-align: center;
 }
 
-.services-page-intro .section-subtitle { /* For the intro paragraph */
+.services-page-intro .section-subtitle {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    color: var(--text-primary);
+    /* color: var(--text-primary); // Will inherit from global .section-subtitle which uses --text-light with opacity */
 }
 
 .services-page-grid-section {
@@ -75,21 +74,16 @@
 }
 
 
-.service-detail-card {
-    padding: 1.5rem; 
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+.service-detail-card { /* This is also a .card, global styles apply. These are specific overrides/additions. */
+    /* padding: 1.5rem; // From global .card */
+    /* transition: transform var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease; // From global .card */
     display: flex;
     flex-direction: column;
     text-align: right;
     min-height: 380px; 
 }
 
-.service-detail-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-distance) * -1) calc(var(--neumorphic-shadow-blur)) var(--neumorphic-shadow-light),
-        calc(var(--neumorphic-shadow-distance) * 1) calc(var(--neumorphic-shadow-distance) * 1) calc(var(--neumorphic-shadow-blur)) var(--neumorphic-shadow-dark);
-}
+/* .service-detail-card:hover is handled by global .card:hover */
 
 .service-detail-card-header {
     display: flex;
@@ -107,22 +101,31 @@
     justify-content: center;
     flex-shrink: 0;
     padding: 8px;
+    background-color: var(--bg-light); /* Or a subtle accent from card */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
+body.dark-mode .service-detail-icon {
+    background-color: var(--bg-dark);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
 
 .service-detail-icon i {
     font-size: 1.4rem;
-    color: var(--text-headings); /* Consider changing to var(--brand-base-blue) */
+    color: var(--primary-accent);
 }
 
 .service-detail-title {
-    font-size: 1.25rem;
-    color: var(--text-headings); /* Consider changing to var(--brand-base-blue) */
+    font-size: 1.25rem; /* Matches global h4 */
+    color: var(--text-light);
     margin-bottom: 0;
 }
+body.dark-mode .service-detail-title { color: var(--text-dark); }
+
 
 .service-detail-description {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    font-size: 0.95rem; /* Slightly smaller than global p */
+    /* color: var(--text-secondary); // Inherits from global p */
     line-height: 1.7;
     margin-bottom: 1rem;
     flex-grow: 1; 
